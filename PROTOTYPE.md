@@ -13,7 +13,11 @@ Ending features: We will have one special fruit that can clear the entire board 
 
 UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
 ![Alt text](ClassDiagramOne.png?raw=true "Class Diagram" )
-
+ -FruitCrush.java: main file. 
+   -Fruits.java: creates types of Fruits and include their corresponding images. 
+     -SpecialFruits.java: creates Fruits that will do special moves. 
+   -Board.java: creates the board and makes actual updates at the end of each move. 
+   -Algorism.java: The key algorism that ensures that there's always a possible next move/refresh the board. 
 
 # Intended pacing:
 
