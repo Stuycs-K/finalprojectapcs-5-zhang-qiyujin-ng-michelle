@@ -25,10 +25,6 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
 
 # Intended pacing:
 
-How you are breaking down the project and who is responsible for which parts.
-
-A timeline with expected completion dates of parts of the project.
-
 -Thursday 5/22: Complete class structures (not methods, just structure) (Qiyujin/Michelle)   
 -Friday 5/23: Finish writing Fruits (Qiyujin), SpecialFruits (Michelle), and board (Qiyujin/Michelle).    
 -Tuesday 5/27: Finish writing algorism and add images (Qiyujin/Michelle).    
