@@ -24,3 +24,13 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
 How you are breaking down the project and who is responsible for which parts.
 
 A timeline with expected completion dates of parts of the project. (CHANGE THIS!!!!!)
+
+-Thursday 5/22: Complete class structures (not methods, just structure)   
+-Friday 5/23: Finish writing Fruits, SpecialFruits, and board.    
+-Tuesday 5/27: Finish writing algorism and add images.    
+-Wednesday 5/28: Tests and revise the entire program as a whole. Improve on playability/algorism.    
+-Thursday 5/29: More Testing/Debugging/Playing    
+-Friday 5/30: last day to make any changes.    
+     
+** there is an in class presentation and a process of video production that's not being included since the exact date is not determined.    
+
