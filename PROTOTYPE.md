@@ -32,8 +32,8 @@ A timeline with expected completion dates of parts of the project.
 -Thursday 5/22: Complete class structures (not methods, just structure) (Qiyujin/Michelle)   
 -Friday 5/23: Finish writing Fruits (Qiyujin), SpecialFruits (Michelle), and board (Qiyujin/Michelle).    
 -Tuesday 5/27: Finish writing algorism and add images (Qiyujin/Michelle).    
--Wednesday 5/28: Tests and revise the entire program as a whole. Improve on playability/algorism.    
--Thursday 5/29: More Testing/Debugging/Playing    
+-Wednesday 5/28: Tests and revise the entire program as a whole. Improve on playability/algorism. (Qiyujin/Michelle)    
+-Thursday 5/29: More Testing/Debugging/Playing (Qiyujin/Michelle)    
 -Friday 5/30: last day to make any changes.    
      
 ** there is an in class presentation and a process of video production that's not being included since the exact date is not determined.    
