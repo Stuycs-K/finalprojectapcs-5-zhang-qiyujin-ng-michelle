@@ -12,7 +12,7 @@ Ending features: We will have one special fruit that can clear the entire board 
 # Project Design
 
 UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
-
+![Alt text](ClassDiagramOne.png?raw=true "Class Diagram" )
 
 
 # Intended pacing:
