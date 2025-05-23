@@ -4,5 +4,4 @@ public class SpecialFruits extends Fruits {
   public void triggerSpecial(){
     
   }
-  
 }
