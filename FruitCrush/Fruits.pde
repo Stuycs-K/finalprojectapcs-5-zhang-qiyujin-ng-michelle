@@ -1,16 +1,13 @@
 public class Fruits {
-  private String[] FruitCatogory = new String[]{"strawberry","apple","banana","peach","cherry"};
+  private final String[] FruitCatogory = new String[]{"strawberry","apple","banana","peach","cherry"};
   private PImage image;
   
-  private Fruits(String fruitType){
+  public Fruits(){
+    String fruitType = FruitCatogory[(int)(Math.random()*FruitCatogory.length)];
     image = loadImage(fruitType+".jpg");
   }
- 
-  public Fruits(){
-    Fruits(FruitCatogory[(int)(Math.random(FruitCatogory.length))]);
-  }
   
-  public void draw(int x, int y, int size){
+  public void drawImage(int x, int y, int size){
     image.resize(size,0);
     image(image, x, y);
   }  
