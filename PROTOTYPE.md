@@ -22,6 +22,7 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
      -SpecialFruits.java: creates Fruits that will do special moves.   
    -Board.java: creates the board and makes actual updates at the end of each move.    
    -Algorism.java: The key algorism that ensures that there's always a possible next move/refresh the board.  
+![Alt text](realClassDiagram.png?raw=true "Second version of Class Diagram" )
 
 # Intended pacing:
 
