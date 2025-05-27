@@ -1,8 +1,17 @@
 public class Board {
   
   private Fruits[][] grid;
-  private int[] numOfFruits;
+  private int cols, rows;
+  private int cellSize;
   private PImage boardImage;
+
+  public Board(int cols, int rows, int cellSize){
+    this.cols = cols;
+    this.rows = rows;
+    this.cellSize = cellSize;
+    grid = new Fruits[cols][rows];
+    initializeBoard();
+  }
   
   public void initializeBoard(){
     
