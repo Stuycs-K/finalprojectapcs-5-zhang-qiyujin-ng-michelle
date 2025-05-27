@@ -10,7 +10,7 @@ How you will be using the topics covered in class in the project.
 # Project Design
 
 UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
-
+![Alt text](realClassDiagram.png?raw=true "Second version of Class Diagram" )
 
     
 # Intended pacing:
