@@ -2,17 +2,22 @@ public class SpecialFruits extends Fruits {
   private int SpecialLevel;
   
   public void triggerSpecial(int[][] board, int row, int col){
-    int specialCheck = 0;
     int rowCheck = row;
     for (int i = 0; i < 5; i++){
       if (board[row+i][col]==board[row][col]){
-        specialCheck++;
+        specialLevel++;
       }
       else{
-        specialCheck = 0;
+        specialLevel = 0;
         break;
       }
       rowCheck++;
     }
-  }
+    if (specialLevel==5){
+      for (int n = 0; n < row; n++){
+        for (int j = 0; j < row[i].length; j++){
+          board[n][j] = 0;
+        }
+      }
+    }
 }
