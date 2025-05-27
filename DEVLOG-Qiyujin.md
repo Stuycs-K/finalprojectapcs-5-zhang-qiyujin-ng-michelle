@@ -10,4 +10,5 @@ Spent the entire period on creating the skeleton for all my classes after branch
 
 ### 2025-05-27
 Remade class diagram. Converged Algorithm class with Board class. 
+Finished Fruits class. 
 
