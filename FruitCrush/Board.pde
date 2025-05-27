@@ -26,7 +26,13 @@ public class Board {
   }
   
   public void draw(){
-    
+    for (int n = 0; n < cols; n++){
+      for (int m = 0; m < rows; m++){
+        if (grid[n][m] != null){
+          grid[n][m].draw(col*cellSize, row*cellSize, cellSize);
+        }
+      }
+    }
   }
   
   public void handleMouse(int x, int y){
