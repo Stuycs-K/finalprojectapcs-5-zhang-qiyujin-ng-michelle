@@ -14,9 +14,11 @@ public class Board {
   }
   
   public void initializeBoard(){
+    String[] fruitTypes = {"strawberry", "apple", "banana", "peach", "cherry"};
     for (int i = 0; i < cols; i++){
       for (int j = 0; j < rows; j++){
-        grid[i][j] = new Fruits();
+        String randomType = fruitTypes[(int)(Math.random()*fruitTypes.length)];        
+        grid[i][j] = new Fruits(randomType);
       }
     }
   }
@@ -29,14 +31,19 @@ public class Board {
     for (int n = 0; n < cols; n++){
       for (int m = 0; m < rows; m++){
         if (grid[n][m] != null){
-          grid[n][m].draw(col*cellSize, row*cellSize, cellSize);
+          grid[n][m].draw(n*cellSize, m*cellSize, cellSize);
         }
       }
     }
   }
   
   public void handleMouse(int x, int y){
-    
+    int col = x / cellSize;
+    int row = y / cellSize;
+
+    if (col < 0 || col >= cols || row < 0 || row >= rows){
+      return;
+    }
   }
   
   public void applyGravity(){
