@@ -14,7 +14,11 @@ public class Board {
   }
   
   public void initializeBoard(){
-    
+    for (int i = 0; i < cols; i++){
+      for (int j = 0; j < rows; j++){
+        grid[i][j] = new Fruits();
+      }
+    }
   }
   
   public void update(){
