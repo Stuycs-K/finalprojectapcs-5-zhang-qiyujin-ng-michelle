@@ -14,11 +14,9 @@ public class Board {
   }
   
   public void initializeBoard(){
-    String[] fruitTypes = {"strawberry", "apple", "banana", "peach", "cherry"};
     for (int i = 0; i < cols; i++){
-      for (int j = 0; j < rows; j++){
-        String randomType = fruitTypes[(int)(Math.random()*fruitTypes.length)];        
-        grid[i][j] = new Fruits(randomType);
+      for (int j = 0; j < rows; j++){    
+        grid[i][j] = new Fruits();
       }
     }
   }
