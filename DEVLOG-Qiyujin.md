@@ -14,3 +14,4 @@ Finished Fruits class.
 
 ### 2025-05-28
 Communicated in class about merging and better coordination.
+
