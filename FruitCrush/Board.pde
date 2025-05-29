@@ -119,4 +119,12 @@ public class Board {
       }
     }
   }
+  
+  public void shuffleBoard(){
+    
+  }
+  
+  public void ensurePossibleMove(){
+    
+  }
 }
