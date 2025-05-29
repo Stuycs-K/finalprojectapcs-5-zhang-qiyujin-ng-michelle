@@ -38,10 +38,10 @@ public class Board {
   }
   
   public void handleMouse(int x, int y){
-    int col = x / cellSize;
-    int row = y / cellSize;
+    int secondCol = x / cellSize;
+    int secondRow = y / cellSize;
 
-    if (col < 0 || col >= cols || row < 0 || row >= rows){
+    if (secondCol < 0 || secondCol >= cols || secondRow < 0 || secondRow >= rows){
       return;
     }
 
@@ -50,11 +50,17 @@ public class Board {
       firstCol = col;
     }
     else{
-      if (((firstRow == row) && (Math.abs(firstCol - col) == 1)) || ((firstRow == row) && (Math.abs(firstCol - col) == 1))){
+      if (((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1)) || ((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1))){
         swap(firstRow, firstCol, row, col);
       }
     }
     
+  }
+  
+  public void swap(int firstRow, int firstCol, int secondRow, int secondCol){
+    Fruits temp = grid[secondRow][secondCol];
+    grid[secondRow][secondCol] = grid[firstRow][firstCol];
+    grid[firstRow][firstCol] = temp;
   }
   
   public void applyGravity(){
