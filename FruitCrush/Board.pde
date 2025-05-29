@@ -140,6 +140,24 @@ public class Board {
       }
     }
 
+    for (int i = 2; i < rows-2; i++){
+      for (int j = 0; j < cols; j++){
+        Fruits fruit1 = grid[i][j];
+        Fruits fruit2 = grid[i][j+1];
+        if (fruit1 != null && fruit2 != null &&
+            fruit1.getFruitType().equals(fruit2.getFruitType())){
+              fruit1Adjacent = grid[i-1][j];
+              fruit1Top = grid[i-2][j];
+              fruit2Adjacent = grid[i+1][j];
+              fruit2Bottom = grid[i+2][j];
+              return ((fruit1.getFruitType().equals(fruit1Adjacent.getFruitType())) ||
+              (fruit1.getFruitType().equals(fruit1Top.getFruitType())) || 
+              (fruit1.getFruitType().equals(fruit2Adjacent.getFruitType())) ||
+              (fruit1.getFruitType().equals(fruit2Bottom.getFruitType())))
+            }
+      }
+    }
+
     
 
   }
