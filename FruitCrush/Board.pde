@@ -31,4 +31,12 @@ public class Board {
   public void checkForMatches(){
     
   }
+  
+  public void shuffleBoard(){
+    
+  }
+  
+  public void ensurePossibleMove(){
+    
+  }
 }
