@@ -62,7 +62,7 @@ public class Board {
     grid[secondRow][secondCol] = grid[firstRow][firstCol];
     grid[firstRow][firstCol] = temp;
   }
-  
+
   public void applyGravity(){
     
   }
@@ -72,6 +72,18 @@ public class Board {
   }
   
   public void checkForMatches(){
-    
+    boolean matches = false;
+    for (int i = 0; i < rows; i++){
+      for (int j = 0; j < cols-2; j++){
+        Fruits fruit1 = grid[i][j];
+        Fruits fruit2 = grid[i][j+1];
+        Fruits fruit3 = grid[i][j+2];
+        if (fruit1 != null && fruit2 != null && fruit3 != null &&
+            fruit1.getFruitType().equals(fruit2.getFruitType()) && 
+            fruit1.getFruitType().equals(fruit3.getFruitType())){
+              matches = true;
+            }
+      }
+    }
   }
 }
