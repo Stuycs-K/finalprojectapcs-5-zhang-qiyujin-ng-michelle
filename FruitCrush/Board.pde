@@ -68,7 +68,13 @@ public class Board {
   }
   
   public void refillBoard(){
-    
+    for (int i = 0; i < rows; i++){
+      for (int j = 0; j < cols; j++){
+        if (grid[i][j] == null){
+          grid[i][j] = new Fruits();
+        }
+      }
+    }
   }
   
   public void checkForMatches(){
@@ -98,7 +104,7 @@ public class Board {
             fruit1.getFruitType().equals(fruit2.getFruitType()) && 
             fruit1.getFruitType().equals(fruit3.getFruitType())){
               matches[m][n] = true;
-              matches[m+1][n]] = true;
+              matches[m+1][n] = true;
               matches[m+2][n] = true;
             }
       }
