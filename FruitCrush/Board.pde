@@ -24,7 +24,8 @@ public class Board {
   }
   
   public void update(){
-
+    checkForMatches();
+    refillBoard();
   }
   
   public void draw(){
@@ -64,7 +65,7 @@ public class Board {
   }
 
   public void applyGravity(){
-    
+    return;
   }
   
   public void refillBoard(){
