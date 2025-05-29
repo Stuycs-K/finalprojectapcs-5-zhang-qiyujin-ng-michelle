@@ -6,6 +6,10 @@ public class Fruits {
     String fruitType = FruitCatogory[(int)(Math.random()*FruitCatogory.length)];
     image = loadImage(fruitType);
   }
+
+  public String getFruitType(){
+    return fruitType;
+  }
   
   public void drawImage(int x, int y, int size){
     image.resize(size,0);
