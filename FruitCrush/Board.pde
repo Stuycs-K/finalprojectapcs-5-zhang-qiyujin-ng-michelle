@@ -72,7 +72,8 @@ public class Board {
   }
   
   public void checkForMatches(){
-    boolean matches = false;
+    boolean[][] matches = boolean[rows][cols];
+
     for (int i = 0; i < rows; i++){
       for (int j = 0; j < cols-2; j++){
         Fruits fruit1 = grid[i][j];
@@ -81,7 +82,9 @@ public class Board {
         if (fruit1 != null && fruit2 != null && fruit3 != null &&
             fruit1.getFruitType().equals(fruit2.getFruitType()) && 
             fruit1.getFruitType().equals(fruit3.getFruitType())){
-              matches = true;
+              matches[i][j] = true;
+              matches[i][j+1] = true;
+              matches[i][j+2] = true;
             }
       }
     }
@@ -94,10 +97,19 @@ public class Board {
         if (fruit1 != null && fruit2 != null && fruit3 != null &&
             fruit1.getFruitType().equals(fruit2.getFruitType()) && 
             fruit1.getFruitType().equals(fruit3.getFruitType())){
-              matches = true;
+              matches[m][n] = true;
+              matches[m+1][n]] = true;
+              matches[m+2][n] = true;
             }
       }
     }
-
+    
+    for (int b = 0; b < rows; b++){
+      for (int k = 0; k < cols; k++){
+        if (matches[b][k]){
+          grid[b][k] = null;
+        }
+      }
+    }
   }
 }
