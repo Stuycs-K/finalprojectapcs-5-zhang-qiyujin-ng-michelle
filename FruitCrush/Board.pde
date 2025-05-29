@@ -4,6 +4,8 @@ public class Board {
   private int cols, rows;
   private int cellSize;
   private PImage boardImage;
+  private int firstRow = -5;
+  private int firstCol = -5;
 
   public Board(int cols, int rows, int cellSize){
     this.cols = cols;
@@ -22,7 +24,7 @@ public class Board {
   }
   
   public void update(){
-    
+
   }
   
   public void draw(){
@@ -42,6 +44,17 @@ public class Board {
     if (col < 0 || col >= cols || row < 0 || row >= rows){
       return;
     }
+
+    if (firstRow == -5 && firstCol == -5){
+      firstRow = row;
+      firstCol = col;
+    }
+    else{
+      if (((firstRow == row) && (Math.abs(firstCol - col) == 1)) || ((firstRow == row) && (Math.abs(firstCol - col) == 1))){
+        swap(firstRow, firstCol, row, col);
+      }
+    }
+    
   }
   
   public void applyGravity(){
