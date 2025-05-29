@@ -1,19 +1,27 @@
   
-
+boolean inOperation = true;
 Board board;
 
 void setup(){
   int sideLength = 500;
   int dimention = 10;
+  
   size(sideLength,sideLength);
   board = new Board(dimention, dimention, sideLength/dimention);
   boardImage = board.boardImage;
   boardImage.resize(sideLength,0);
   image(loadImage(boardImage),0,0);
+  board.initializeBoard();
+  board.drawBoard();
 }
 
 void draw(){
+  image(loadImage(boardImage),0,0);
   
+}
+
+void tick(){
+  image(loadImage(boardImage),0,0);
 }
 
 void settings(){

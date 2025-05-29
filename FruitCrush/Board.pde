@@ -135,7 +135,7 @@ public class Board {
               return ((fruit1.getFruitType().equals(fruit1Adjacent.getFruitType())) ||
               (fruit1.getFruitType().equals(fruit1Left.getFruitType())) || 
               (fruit1.getFruitType().equals(fruit2Adjacent.getFruitType())) ||
-              (fruit1.getFruitType().equals(fruit2Right.getFruitType())))
+              (fruit1.getFruitType().equals(fruit2Right.getFruitType())));
             }
       }
     }

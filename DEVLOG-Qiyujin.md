@@ -15,3 +15,5 @@ Finished Fruits class.
 ### 2025-05-28
 Communicated in class about merging and better coordination.
 
+### 2025-05-29
+began working on FruitCrush and bringing things together. decided to not do shuffeling for now and work on it later. 
