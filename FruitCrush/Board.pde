@@ -28,11 +28,11 @@ public class Board {
     refillBoard();
   }
   
-  public void draw(){
+  public void drawBoard(){
     for (int n = 0; n < cols; n++){
       for (int m = 0; m < rows; m++){
         if (grid[n][m] != null){
-          grid[n][m].draw(n*cellSize, m*cellSize, cellSize);
+          grid[n][m].drawFruits(n*cellSize, m*cellSize, cellSize);
         }
       }
     }
@@ -79,7 +79,8 @@ public class Board {
   }
   
   public void checkForMatches(){
-    boolean[][] matches = boolean[rows][cols];
+    boolean possible = false;
+    boolean[][] matches = new boolean[rows][cols];
 
     for (int i = 0; i < rows; i++){
       for (int j = 0; j < cols-2; j++){
@@ -120,11 +121,26 @@ public class Board {
     }
   }
   
-  public void shuffleBoard(){
+  public void isPossibleMove(){
+    for (int i = 0; i < rows; i++){
+      for (int j = 2; j < cols-2; j++){
+        Fruits fruit1 = grid[i][j];
+        Fruits fruit2 = grid[i][j+1];
+        if (fruit1 != null && fruit2 != null &&
+            fruit1.getFruitType().equals(fruit2.getFruitType())){
+              fruit1Adjacent = grid[i][j-1];
+              fruit1Left = grid[i][j-2];
+              fruit2Adjacent = grid[i][j+1];
+              fruit2Right = grid[i][j+2];
+              return ((fruit1.getFruitType().equals(fruit1Adjacent.getFruitType())) ||
+              (fruit1.getFruitType().equals(fruit1Left.getFruitType())) || 
+              (fruit1.getFruitType().equals(fruit2Adjacent.getFruitType())) ||
+              (fruit1.getFruitType().equals(fruit2Right.getFruitType())))
+            }
+      }
+    }
+
     
-  }
-  
-  public void ensurePossibleMove(){
-    
+
   }
 }
