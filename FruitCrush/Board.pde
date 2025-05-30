@@ -11,6 +11,7 @@ public class Board {
     this.cols = cols;
     this.rows = rows;
     this.cellSize = cellSize;
+    this.boardImage = loadImage(PinkImage.png);
     grid = new Fruits[cols][rows];
     initializeBoard();
   }
@@ -138,7 +139,7 @@ public class Board {
               (fruit2Right != null && fruit1.getFruitType().equals(fruit2Right.getFruitType()))){
                 return true;
               }
-            }
+          }
       }
     }
 
