@@ -128,19 +128,65 @@ public class Board {
         Fruits fruit2 = grid[i][j+1];
         if (fruit1 != null && fruit2 != null &&
             fruit1.getFruitType().equals(fruit2.getFruitType())){
-              fruit1Adjacent = grid[i][j-1];
-              fruit1Left = grid[i][j-2];
-              fruit2Adjacent = grid[i][j+1];
-              fruit2Right = grid[i][j+2];
-              return ((fruit1.getFruitType().equals(fruit1Adjacent.getFruitType())) ||
-              (fruit1.getFruitType().equals(fruit1Left.getFruitType())) || 
-              (fruit1.getFruitType().equals(fruit2Adjacent.getFruitType())) ||
-              (fruit1.getFruitType().equals(fruit2Right.getFruitType())));
+              Fruits fruit1Adjacent = grid[i][j-1];
+              Fruits fruit1Left = grid[i][j-2];
+              Fruits fruit2Adjacent = grid[i][j+1];
+              Fruits fruit2Right = grid[i][j+2];
+              if ((fruit1Adjacent != null && fruit1.getFruitType().equals(fruit1Adjacent.getFruitType())) ||
+              (fruit1Left != null && fruit1.getFruitType().equals(fruit1Left.getFruitType())) || 
+              (fruit2Adjacent != null && fruit1.getFruitType().equals(fruit2Adjacent.getFruitType())) ||
+              (fruit2Right != null && fruit1.getFruitType().equals(fruit2Right.getFruitType()))){
+                return true;
+              }
             }
       }
     }
 
-    
+    for (int i = 2; i < rows-2; i++){
+      for (int j = 0; j < cols; j++){
+        Fruits fruit1 = grid[i][j];
+        Fruits fruit2 = grid[i][j+1];
+        if (fruit1 != null && fruit2 != null &&
+            fruit1.getFruitType().equals(fruit2.getFruitType())){
+              Fruits fruit1Adjacent = grid[i-1][j];
+              Fruits fruit1Top = grid[i-2][j];
+              Fruits fruit2Adjacent = grid[i+1][j];
+              Fruits fruit2Bottom = grid[i+2][j];
+              if ((fruit1Adjacent != null && fruit1.getFruitType().equals(fruit1Adjacent.getFruitType())) ||
+              (fruit1Top != null && fruit1.getFruitType().equals(fruit1Top.getFruitType())) || 
+              (fruit2Adjacent != null && fruit1.getFruitType().equals(fruit2Adjacent.getFruitType())) ||
+              (fruit2Bottom != null && fruit1.getFruitType().equals(fruit2Bottom.getFruitType()))){
+                return true;
+              }
+            }
+      }
+    }
+
+    int count = 0;
+
+    for (int i = 1; i < rows-1; i++){
+      for (int j = 1; j < cols-1; j++){
+        Fruits center = grid[i][j];
+        Fruits left = grid[i][j-1];
+        Fruits right = grid[i][j+1];
+        Fruits top = grid[i-1][j];
+        Fruits bottom = grid[i+1][j];
+        if (left != null && center.getFruitType().equals(left.getFruitType())){
+          count++;
+        }
+        if (right != null && center.getFruitType().equals(right.getFruitType())){
+          count++;
+        }
+        if (top != null && center.getFruitType().equals(top.getFruitType())){
+          count++;
+        }
+        if (bottom != null && center.getFruitType().equals(bottom.getFruitType())){
+          count++;
+        }
+      }
+    }
+
+    return (count>=3);
 
   }
 }
