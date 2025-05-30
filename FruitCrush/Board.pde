@@ -158,7 +158,31 @@ public class Board {
       }
     }
 
-    
+    int count = 0;
+
+    for (int i = 1; i < rows-1; i++){
+      for (int j = 1; j < cols-1; j++){
+        Fruits center = grid[i][j];
+        Fruits left = grid[i][j-1];
+        Fruits right = grid[i][j+1];
+        Fruits top = grid[i-1][j];
+        Fruits bottom = grid[i+1][j];
+        if (center.getFruitType().equals(left.getFruitType())){
+          count++;
+        }
+        if (center.getFruitType().equals(right.getFruitType())){
+          count++;
+        }
+        if (center.getFruitType().equals(top.getFruitType())){
+          count++;
+        }
+        if (center.getFruitType().equals(bottom.getFruitType())){
+          count++;
+        }
+      }
+    }
+
+    return (count>=3);
 
   }
 }
