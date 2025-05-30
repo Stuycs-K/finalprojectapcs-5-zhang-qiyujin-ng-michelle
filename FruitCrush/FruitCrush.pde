@@ -1,16 +1,15 @@
-  
-boolean inOperation = true;
+boolean inOperation;
 Board board;
 
 void setup(){
   int sideLength = 500;
-  int dimention = 10;
+  int dimension = 10;
   
   size(sideLength,sideLength);
-  board = new Board(dimention, dimention, sideLength/dimention);
-  boardImage = board.boardImage;
+  board = new Board(dimension, dimension, sideLength/dimension);
+  PImage boardImage = board.boardImage;
   boardImage.resize(sideLength,0);
-  image(loadImage(boardImage),0,0);
+  image(boardImage,0,0);
   board.initializeBoard();
   board.drawBoard();
 }
