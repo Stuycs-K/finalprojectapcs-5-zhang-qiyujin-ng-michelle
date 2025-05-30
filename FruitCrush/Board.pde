@@ -60,10 +60,12 @@ public class Board {
         firstCol = -5;
       }
     }
-    
   }
   
   public void swap(int firstRow, int firstCol, int secondRow, int secondCol){
+    Fruits secondFruit = grid[secondRow][secondCol];
+    secondFruit.getFruitType().equals();
+    if (grid[secondRow][secondCol])
     Fruits temp = grid[secondRow][secondCol];
     grid[secondRow][secondCol] = grid[firstRow][firstCol];
     grid[firstRow][firstCol] = temp;
@@ -81,6 +83,7 @@ public class Board {
         }
       }
     }
+    inOperation = false;
   }
   
   public void checkForMatches(){
