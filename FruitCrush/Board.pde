@@ -6,6 +6,8 @@ public class Board {
   private PImage boardImage;
   private int firstRow = -5;
   private int firstCol = -5;
+  private int score = 0;
+  private boolean inOperation;
 
   public Board(int cols, int rows, int cellSize){
     this.cols = cols;
@@ -94,6 +96,8 @@ public class Board {
               matches[i][j] = true;
               matches[i][j+1] = true;
               matches[i][j+2] = true;
+              inOperation = true;
+              score+=300;
             }
       }
     }
@@ -109,6 +113,8 @@ public class Board {
               matches[m][n] = true;
               matches[m+1][n] = true;
               matches[m+2][n] = true;
+              inOperation = true;
+              score+=300;
             }
       }
     }
