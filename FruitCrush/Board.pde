@@ -6,11 +6,14 @@ public class Board {
   private PImage boardImage;
   private int firstRow = -5;
   private int firstCol = -5;
+  private int score = 0;
+  private boolean inOperation;
 
   public Board(int cols, int rows, int cellSize){
     this.cols = cols;
     this.rows = rows;
     this.cellSize = cellSize;
+    this.boardImage = loadImage(PinkImage.png);
     grid = new Fruits[cols][rows];
     initializeBoard();
   }
@@ -53,12 +56,16 @@ public class Board {
     else{
       if (((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1)) || ((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1))){
         swap(firstRow, firstCol, row, col);
+        firstRow = -5;
+        firstCol = -5;
       }
     }
-    
   }
   
   public void swap(int firstRow, int firstCol, int secondRow, int secondCol){
+    Fruits secondFruit = grid[secondRow][secondCol];
+    secondFruit.getFruitType().equals();
+    if (grid[secondRow][secondCol])
     Fruits temp = grid[secondRow][secondCol];
     grid[secondRow][secondCol] = grid[firstRow][firstCol];
     grid[firstRow][firstCol] = temp;
@@ -76,6 +83,7 @@ public class Board {
         }
       }
     }
+    inOperation = false;
   }
   
   public void checkForMatches(){
@@ -93,6 +101,8 @@ public class Board {
               matches[i][j] = true;
               matches[i][j+1] = true;
               matches[i][j+2] = true;
+              inOperation = true;
+              score+=300;
             }
       }
     }
@@ -108,6 +118,8 @@ public class Board {
               matches[m][n] = true;
               matches[m+1][n] = true;
               matches[m+2][n] = true;
+              inOperation = true;
+              score+=300;
             }
       }
     }
@@ -138,7 +150,7 @@ public class Board {
               (fruit2Right != null && fruit1.getFruitType().equals(fruit2Right.getFruitType()))){
                 return true;
               }
-            }
+          }
       }
     }
 
