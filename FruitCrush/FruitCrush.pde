@@ -1,27 +1,30 @@
-boolean inOperation;
+Fruits fruit;
 Board board;
+PImage boardImage;
+int sideLength = 500;
+int dimension = 10;
 
 void setup(){
-  int sideLength = 500;
-  int dimension = 10;
-  
-  size(sideLength,sideLength); 
+  size(500,500);
+  fruit = new Fruits();
   board = new Board(dimension, dimension, sideLength/dimension);
-  /*
-  PImage boardImage = board.boardImage;
+  boardImage = loadImage(board.boardImage());
   boardImage.resize(sideLength,0);
   image(boardImage,0,0);
-  board.initializeBoard();
   board.drawBoard();
-  */
 }
 
 void draw(){
-  image(loadImage(board.boardImage),0,0);
-  
+  if(frameCount%10 == 0 && !board.inOperation){
+    background(0);
+    image(boardImage,0,0);
+    board.drawBoard();
+    board.update();
+  }
 }
-/*
+
 void mousePressed(){
-  
+  if(!board.inOperation){
+    board.handleMouse(mouseX,mouseY);
+  }
 }
-*/
