@@ -65,6 +65,37 @@ public class Board {
   public boolean hasMatch(int row, int col){
     Fruits current = grid[row][col];
     String currType = current.getFruitType();
+
+    //horizontal checks
+    if (col < cols-2){
+      Fruits right1 = grid[row][col+1];
+      Fruits right2 = grid[row][col+2];
+      if (right1 != null && right2 != null &&
+        right1.getFruitType().equals(currType) &&
+        right2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (col >= 2){
+      Fruits left1 = grid[row][col-1];
+      Fruits left2 = grid[row][col-2];
+      if (left1 != null && left2 != null &&
+        left1.getFruitType().equals(currType) &&
+        left2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (col >= 1 && col < cols-1){
+      Fruits left = grid[row][col-1];
+      Fruits right = grid[row][col+1];
+      if (left != null && right != null &&
+        left.getFruitType().equals(currType) &&
+        right.getFruitType().equals(currType)){
+          return true;
+        }
+    }
   }
   
   public void swap(int firstRow, int firstCol, int secondRow, int secondCol){
