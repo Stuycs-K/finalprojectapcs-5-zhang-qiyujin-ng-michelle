@@ -1,4 +1,4 @@
-public class Board {
+/*public class Board {
   
   private Fruits[][] grid;
   private int cols, rows;
@@ -15,7 +15,7 @@ public class Board {
     this.rows = rows;
     this.cellSize = cellSize;
     this.boardImage = "PinkGrid.png";
-    grid = new Fruits[rows][cols];
+    grid = new Fruits[cols][rows];
     initializeBoard();
     gameStarted = false;
     while(checkForMatches()){
@@ -31,9 +31,9 @@ public class Board {
   
   
   public void initializeBoard(){
-    for (int r = 0; r < rows; r++){
-      for (int c = 0; c < rows; c++){    
-        grid[r][c] = new Fruits();
+    for (int i = 0; i < cols; i++){
+      for (int j = 0; j < rows; j++){    
+        grid[i][j] = new Fruits();
       }
     }
   }
@@ -44,10 +44,10 @@ public class Board {
   }
   
   public void drawBoard(){
-    for (int r = 0; r < rows; r++){
-      for (int c = 0; c < cols; c++){
-        if (grid[r][c] != null){
-          grid[r][c].drawFruits(r*cellSize, c*cellSize, cellSize);///////////////////////////////////////////////////
+    for (int n = 0; n < cols; n++){
+      for (int m = 0; m < rows; m++){
+        if (grid[n][m] != null){
+          grid[n][m].drawFruits(n*cellSize, m*cellSize, cellSize);
         }
       }
     }
@@ -60,15 +60,13 @@ public class Board {
     if (secondCol < 0 || secondCol >= cols || secondRow < 0 || secondRow >= rows){
       return;
     }
-    if (firstRow < 0){
+    if (firstRow == -5 && firstCol == -5){
       firstRow = secondRow;
       firstCol = secondCol;
     }
     else{
       if (((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1)) || ((firstCol == secondCol) && (Math.abs(firstRow - secondRow) == 1))){
-        inOperation = true;
         swap(firstRow, firstCol, secondRow, secondCol);
-        delay(1000);
         if (!(hasMatch(secondRow,secondCol) || hasMatch(firstRow,firstCol))){
           swap(firstRow, firstCol, secondRow, secondCol);
         }
@@ -148,6 +146,7 @@ public class Board {
   }
   
   public void swap(int firstRow, int firstCol, int secondRow, int secondCol){
+    inOperation = true;
     Fruits secondFruit = grid[secondRow][secondCol];
     grid[secondRow][secondCol] = grid[firstRow][firstCol];
     grid[firstRow][firstCol] = secondFruit;
@@ -159,10 +158,10 @@ public class Board {
   }
   
   public void refillBoard(){
-    for (int r = 0; r < rows; r++){
-      for (int c = 0; c < cols; c++){
-        if (grid[r][c] == null){
-          grid[r][c] = new Fruits();
+    for (int i = 0; i < cols; i++){
+      for (int j = 0; j < rows; j++){
+        if (grid[i][j] == null){
+          grid[i][j] = new Fruits();
         }
       }
     }
@@ -173,17 +172,17 @@ public class Board {
     boolean possible = false;
     boolean[][] matches = new boolean[rows][cols];
 
-    for (int r = 0; r < rows; r++){
-      for (int c = 0; c < cols-2; c++){
-        Fruits fruit1 = grid[r][c];
-        Fruits fruit2 = grid[r][c+1];
-        Fruits fruit3 = grid[r][c+2];
+    for (int i = 0; i < rows; i++){
+      for (int j = 0; j < cols-2; j++){
+        Fruits fruit1 = grid[i][j];
+        Fruits fruit2 = grid[i][j+1];
+        Fruits fruit3 = grid[i][j+2];
         if (fruit1 != null && fruit2 != null && fruit3 != null &&
             fruit1.getFruitType().equals(fruit2.getFruitType()) && 
             fruit1.getFruitType().equals(fruit3.getFruitType())){
-              matches[r][c] = true;
-              matches[r][c+1] = true;
-              matches[r][c+2] = true;
+              matches[i][j] = true;
+              matches[i][j+1] = true;
+              matches[i][j+2] = true;
               if(gameStarted)
                 score+=300;
               possible = true;
@@ -288,4 +287,4 @@ public class Board {
     return (count>=3);
 
   }
-}
+}*/

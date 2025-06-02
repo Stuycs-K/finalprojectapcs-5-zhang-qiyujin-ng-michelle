@@ -5,13 +5,26 @@ int sideLength = 500;
 int dimension = 10;
 
 void setup(){
-  size(1000,1000);
+  size(500,500);
   fruit = new Fruits();
   board = new Board(dimension, dimension, sideLength/dimension);
   boardImage = loadImage(board.boardImage());
+  boardImage.resize(sideLength,0);
+  image(boardImage,0,0);
+  board.drawBoard();
 }
 
 void draw(){
-  square(0,0,100);
-  fruit.drawFruits(0,0,100);
+  if(frameCount%10 == 0 && !board.inOperation){
+    background(0);
+    image(boardImage,0,0);
+    board.drawBoard();
+    board.update();
+  }
+}
+
+void mousePressed(){
+  if(!board.inOperation){
+    board.handleMouse(mouseY,mouseX);
+  }
 }
