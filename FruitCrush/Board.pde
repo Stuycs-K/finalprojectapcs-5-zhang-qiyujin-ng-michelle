@@ -50,12 +50,15 @@ public class Board {
     }
 
     if (firstRow == -5 && firstCol == -5){
-      firstRow = row;
-      firstCol = col;
+      firstRow = secondRow;
+      firstCol = secondCol;
     }
     else{
-      if (((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1)) || ((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1))){
-        swap(firstRow, firstCol, row, col);
+      if (((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1)) || ((firstCol == secondCol) && (Math.abs(firstRow - secondRow) == 1))){
+        swap(firstRow, firstCol, secondRow, secondCol);
+        if (!(hasMatch(secondRow,secondCol))){
+          swap(firstRow, firstCol, secondRow, secondCol);
+        }
         firstRow = -5;
         firstCol = -5;
       }
