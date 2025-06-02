@@ -17,3 +17,7 @@ Communicated in class about merging and better coordination.
 
 ### 2025-05-29
 began working on FruitCrush and bringing things together. decided to not do shuffeling for now and work on it later. 
+
+### 2025-06-01
+The MVP is now working: can switch, clear out, drop down, etc. 
+Need to work on: making score board,adding reshuffle button, adding more combinations for clearing, animation, special bonus clears, etc. 
