@@ -50,25 +50,94 @@ public class Board {
     }
 
     if (firstRow == -5 && firstCol == -5){
-      firstRow = row;
-      firstCol = col;
+      firstRow = secondRow;
+      firstCol = secondCol;
     }
     else{
-      if (((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1)) || ((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1))){
-        swap(firstRow, firstCol, row, col);
+      if (((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1)) || ((firstCol == secondCol) && (Math.abs(firstRow - secondRow) == 1))){
+        swap(firstRow, firstCol, secondRow, secondCol);
+        if (!(hasMatch(secondRow,secondCol) || hasMatch(firstRow,firstCol))){
+          swap(firstRow, firstCol, secondRow, secondCol);
+        }
         firstRow = -5;
         firstCol = -5;
       }
     }
   }
+
+  public boolean hasMatch(int row, int col){
+    Fruits current = grid[row][col];
+    String currType = current.getFruitType();
+
+    //horizontal checks
+    if (col < cols-2){
+      Fruits right1 = grid[row][col+1];
+      Fruits right2 = grid[row][col+2];
+      if (right1 != null && right2 != null &&
+        right1.getFruitType().equals(currType) &&
+        right2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (col >= 2){
+      Fruits left1 = grid[row][col-1];
+      Fruits left2 = grid[row][col-2];
+      if (left1 != null && left2 != null &&
+        left1.getFruitType().equals(currType) &&
+        left2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (col >= 1 && col < cols-1){
+      Fruits left = grid[row][col-1];
+      Fruits right = grid[row][col+1];
+      if (left != null && right != null &&
+        left.getFruitType().equals(currType) &&
+        right.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    //vertical checks
+    if (row < rows-2){
+      Fruits bottom1 = grid[row+1][col];
+      Fruits bottom2 = grid[row+2][col];
+      if (bottom1 != null && bottom2 != null &&
+        bottom1.getFruitType().equals(currType) &&
+        bottom2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (row >= 2){
+      Fruits top1 = grid[row-1][col];
+      Fruits top2 = grid[row-2][col];
+      if (top1 != null && top2 != null &&
+        top1.getFruitType().equals(currType) &&
+        top2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (row >= 1 && row < rows-1){
+      Fruits top = grid[row-1][col];
+      Fruits bottom = grid[row+1][col];
+      if (top != null && bottom != null &&
+        top.getFruitType().equals(currType) &&
+        bottom.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    return false;
+  }
   
   public void swap(int firstRow, int firstCol, int secondRow, int secondCol){
     Fruits secondFruit = grid[secondRow][secondCol];
-    secondFruit.getFruitType().equals();
-    if (grid[secondRow][secondCol])
-    Fruits temp = grid[secondRow][secondCol];
     grid[secondRow][secondCol] = grid[firstRow][firstCol];
-    grid[firstRow][firstCol] = temp;
+    grid[firstRow][firstCol] = secondFruit;
   }
 
   public void applyGravity(){
