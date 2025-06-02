@@ -61,14 +61,16 @@ public class Board {
       }
     }
   }
+
+  public boolean hasMatch(int row, int col){
+    Fruits current = grid[row][col];
+    String currType = current.getFruitType();
+  }
   
   public void swap(int firstRow, int firstCol, int secondRow, int secondCol){
     Fruits secondFruit = grid[secondRow][secondCol];
-    secondFruit.getFruitType().equals();
-    if (grid[secondRow][secondCol])
-    Fruits temp = grid[secondRow][secondCol];
     grid[secondRow][secondCol] = grid[firstRow][firstCol];
-    grid[firstRow][firstCol] = temp;
+    grid[firstRow][firstCol] = secondFruit;
   }
 
   public void applyGravity(){
