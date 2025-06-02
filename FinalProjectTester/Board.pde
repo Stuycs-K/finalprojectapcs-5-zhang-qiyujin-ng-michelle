@@ -8,6 +8,7 @@ public class Board {
   private int firstCol = -5;
   private int score = 0;
   private boolean inOperation;
+  private boolean gameStarted;
 
   public Board(int cols, int rows, int cellSize){
     this.cols = cols;
@@ -16,9 +17,11 @@ public class Board {
     this.boardImage = "PinkImage.png";
     grid = new Fruits[cols][rows];
     initializeBoard();
+    gameStarted = false;
     while(checkForMatches()){
       refillBoard();
     }
+    gameStarted = true;
   }
   
   public String boardImage(){
@@ -178,7 +181,8 @@ public class Board {
               matches[i][j+1] = true;
               matches[i][j+2] = true;
               inOperation = true;
-              score+=300;
+              if(gameStarted)
+                score+=300;
               possible = true;
             }
       }
@@ -196,7 +200,8 @@ public class Board {
               matches[m+1][n] = true;
               matches[m+2][n] = true;
               inOperation = true;
-              score+=300;
+              if(gameStarted)
+                score+=300;
               possible = true;
             }
       }
