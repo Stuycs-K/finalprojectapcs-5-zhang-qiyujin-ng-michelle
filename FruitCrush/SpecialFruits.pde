@@ -1,4 +1,4 @@
-public class SpecialFruits extends Fruits {
+/*public class SpecialFruits extends Fruits {
   private int SpecialLevel;
   
   public void triggerSpecial(int[][] board, int row, int col){
@@ -61,4 +61,4 @@ public class SpecialFruits extends Fruits {
     }
 
     specialLevel = 0;
-}
+}*/

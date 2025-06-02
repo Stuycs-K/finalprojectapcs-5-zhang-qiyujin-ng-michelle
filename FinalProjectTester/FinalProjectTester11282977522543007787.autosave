@@ -1,0 +1,11 @@
+Fruits fruit;
+
+void setup(){
+  size(1000,1000);
+  fruit = new Fruits();
+}
+
+void draw(){
+  square(0,0,100);
+  fruit.drawFruits(0,0,100);
+}

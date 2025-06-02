@@ -32,32 +32,30 @@ public class Board {
   
   public void initializeBoard(){
     for (int r = 0; r < rows; r++){
-      for (int c = 0; c < cols; c++){    
+      for (int c = 0; c < rows; c++){    
         grid[r][c] = new Fruits();
       }
     }
   }
   
   public void update(){
-    if(checkForMatches()){
-      applyGravity();
+    if(checkForMatches())
       refillBoard();
-    }
   }
   
   public void drawBoard(){
     for (int r = 0; r < rows; r++){
       for (int c = 0; c < cols; c++){
         if (grid[r][c] != null){
-          grid[r][c].drawFruits(c*cellSize, r*cellSize, cellSize);
+          grid[r][c].drawFruits(r*cellSize, c*cellSize, cellSize);///////////////////////////////////////////////////
         }
       }
     }
   }
   
   public void handleMouse(int x, int y){
-    int secondCol = x / cellSize;
-    int secondRow = y / cellSize;
+    int secondCol = y / cellSize;
+    int secondRow = x / cellSize;
 
     if (secondCol < 0 || secondCol >= cols || secondRow < 0 || secondRow >= rows){
       return;
@@ -163,7 +161,7 @@ public class Board {
         Fruits fruit3 = grid[r][c+2];
         if (fruit1 != null && fruit2 != null && fruit3 != null &&
             fruit1.getFruitType().equals(fruit2.getFruitType()) && 
-            fruit2.getFruitType().equals(fruit3.getFruitType())){
+            fruit1.getFruitType().equals(fruit3.getFruitType())){
               matches[r][c] = true;
               matches[r][c+1] = true;
               matches[r][c+2] = true;
@@ -174,8 +172,8 @@ public class Board {
       }
     }
 
-    for (int n = 0; n < cols; n++){
-      for (int m = 0; m < rows-2; m++){
+    for (int m = 0; m < rows-2; m++){
+      for (int n = 0; n < cols; n++){
         Fruits fruit1 = grid[m][n];
         Fruits fruit2 = grid[m+1][n];
         Fruits fruit3 = grid[m+2][n];
