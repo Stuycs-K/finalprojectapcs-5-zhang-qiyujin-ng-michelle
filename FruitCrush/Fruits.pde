@@ -1,5 +1,5 @@
   public class Fruits {
-    private final String[] FruitCategory = new String[]{"strawberry.png","apple.png","banana.png","peach.jpg","cherry.jpg"};
+    private final String[] FruitCategory = new String[]{"strawberry.png","apple.png","banana.png","peach.png","cherry.png"};
     private PImage image;
     private String fruitType;
     
