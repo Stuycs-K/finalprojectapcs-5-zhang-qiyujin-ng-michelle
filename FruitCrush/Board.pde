@@ -56,7 +56,7 @@ public class Board {
     else{
       if (((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1)) || ((firstCol == secondCol) && (Math.abs(firstRow - secondRow) == 1))){
         swap(firstRow, firstCol, secondRow, secondCol);
-        if (!(hasMatch(secondRow,secondCol))){
+        if (!(hasMatch(secondRow,secondCol) || hasMatch(firstRow,firstCol))){
           swap(firstRow, firstCol, secondRow, secondCol);
         }
         firstRow = -5;
