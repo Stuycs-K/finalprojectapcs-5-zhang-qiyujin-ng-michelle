@@ -54,8 +54,8 @@ public class Board {
   }
   
   public void handleMouse(int x, int y){
-    int secondCol = x / cellSize;
-    int secondRow = y / cellSize;
+    int secondCol = y / cellSize;
+    int secondRow = x / cellSize;
 
     if (secondCol < 0 || secondCol >= cols || secondRow < 0 || secondRow >= rows){
       return;
@@ -68,7 +68,6 @@ public class Board {
       if (((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1)) || ((firstCol == secondCol) && (Math.abs(firstRow - secondRow) == 1))){
         inOperation = true;
         swap(firstRow, firstCol, secondRow, secondCol);
-        delay(1000);
         if (!(hasMatch(secondRow,secondCol) || hasMatch(firstRow,firstCol))){
           swap(firstRow, firstCol, secondRow, secondCol);
         }
@@ -79,72 +78,43 @@ public class Board {
   }
 
   public boolean hasMatch(int row, int col){
-    Fruits current = grid[row][col];
-    String currType = current.getFruitType();
-
-    //horizontal checks
-    if (col < cols-2){
-      Fruits right1 = grid[row][col+1];
-      Fruits right2 = grid[row][col+2];
-      if (right1 != null && right2 != null &&
-        right1.getFruitType().equals(currType) &&
-        right2.getFruitType().equals(currType)){
-          return true;
-        }
+    if(row<0 || row >= rows || col < 0 || col >= cols){
+      return false;
     }
-
-    if (col >= 2){
-      Fruits left1 = grid[row][col-1];
-      Fruits left2 = grid[row][col-2];
-      if (left1 != null && left2 != null &&
-        left1.getFruitType().equals(currType) &&
-        left2.getFruitType().equals(currType)){
-          return true;
-        }
+    Fruits center = grid[row][col];
+    String type = center.getFruitType();
+    
+    int count = 1;
+    for(int c = col -1; c >= 0; c--){
+      if(grid[row][c].getFruitType().equals(type))
+        count++;
+       else
+         break;
     }
-
-    if (col >= 1 && col < cols-1){
-      Fruits left = grid[row][col-1];
-      Fruits right = grid[row][col+1];
-      if (left != null && right != null &&
-        left.getFruitType().equals(currType) &&
-        right.getFruitType().equals(currType)){
-          return true;
-        }
+    for(int c = col+1; c < cols; c ++){
+       if(grid[row][c].getFruitType().equals(type))
+        count++;
+       else
+         break;
     }
-
-    //vertical checks
-    if (row < rows-2){
-      Fruits bottom1 = grid[row+1][col];
-      Fruits bottom2 = grid[row+2][col];
-      if (bottom1 != null && bottom2 != null &&
-        bottom1.getFruitType().equals(currType) &&
-        bottom2.getFruitType().equals(currType)){
-          return true;
-        }
+    if (count >= 3)
+      return true;
+    
+    count = 1;
+    for(int r = row -1; r >= 0; r--){
+      if(grid[r][col].getFruitType().equals(type))
+        count++;
+       else
+         break;
     }
-
-    if (row >= 2){
-      Fruits top1 = grid[row-1][col];
-      Fruits top2 = grid[row-2][col];
-      if (top1 != null && top2 != null &&
-        top1.getFruitType().equals(currType) &&
-        top2.getFruitType().equals(currType)){
-          return true;
-        }
+    for(int r = row+1; r < rows; r ++){
+       if(grid[r][col].getFruitType().equals(type))
+        count++;
+       else
+         break;
     }
-
-    if (row >= 1 && row < rows-1){
-      Fruits top = grid[row-1][col];
-      Fruits bottom = grid[row+1][col];
-      if (top != null && bottom != null &&
-        top.getFruitType().equals(currType) &&
-        bottom.getFruitType().equals(currType)){
-          return true;
-        }
-    }
-
-    return false;
+    return (count >= 3);
+    
   }
   
   public void swap(int firstRow, int firstCol, int secondRow, int secondCol){
@@ -155,7 +125,18 @@ public class Board {
   }
 
   public void applyGravity(){
-    return;
+    for(int c = 0; c < cols; c++){
+      int bottomRow = rows-1;
+      for(int r = rows-1; r >= 0; r --){
+        if(grid[r][c] != null){
+          grid[bottomRow][c] = grid[r][c];
+          if(bottomRow != r){
+            grid[r][c] = null;
+          }
+          bottomRow--;
+        }
+      }
+    }
   }
   
   public void refillBoard(){

@@ -25,6 +25,6 @@ void draw(){
 
 void mousePressed(){
   if(!board.inOperation){
-    board.handleMouse(mouseY,mouseX);
+    board.handleMouse(mouseX,mouseY);
   }
 }
