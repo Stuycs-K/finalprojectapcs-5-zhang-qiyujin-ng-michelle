@@ -96,6 +96,39 @@ public class Board {
           return true;
         }
     }
+
+    //vertical checks
+    if (row < rows-2){
+      Fruits bottom1 = grid[row+1][col];
+      Fruits bottom2 = grid[row+2][col];
+      if (bottom1 != null && bottom2 != null &&
+        bottom1.getFruitType().equals(currType) &&
+        bottom2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (row >= 2){
+      Fruits top1 = grid[row-1][col];
+      Fruits top2 = grid[row-2][col];
+      if (top1 != null && top2 != null &&
+        top1.getFruitType().equals(currType) &&
+        top2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (row >= 1 && row < rows-1){
+      Fruits top = grid[row-1][col];
+      Fruits bottom = grid[row+1][col];
+      if (top != null && bottom != null &&
+        top.getFruitType().equals(currType) &&
+        bottom.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    return false;
   }
   
   public void swap(int firstRow, int firstCol, int secondRow, int secondCol){
