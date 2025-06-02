@@ -5,7 +5,7 @@ void setup(){
   int sideLength = 500;
   int dimension = 10;
   
-  size(sideLength,sideLength);
+  size(sideLength,sideLength); 
   board = new Board(dimension, dimension, sideLength/dimension);
   /*
   PImage boardImage = board.boardImage;
@@ -17,14 +17,11 @@ void setup(){
 }
 
 void draw(){
-  image(loadImage(boardImage),0,0);
+  image(loadImage(board.boardImage),0,0);
   
 }
-
-void settings(){
-  
-}
-
+/*
 void mousePressed(){
   
 }
+*/

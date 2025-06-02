@@ -3,7 +3,7 @@ public class Board {
   private Fruits[][] grid;
   private int cols, rows;
   private int cellSize;
-  private PImage boardImage;
+  private String boardImage;
   private int firstRow = -5;
   private int firstCol = -5;
   private int score = 0;
@@ -13,27 +13,24 @@ public class Board {
     this.cols = cols;
     this.rows = rows;
     this.cellSize = cellSize;
-    this.boardImage = loadImage("PinkImage.png");
+    this.boardImage = "PinkImage.png";
     grid = new Fruits[cols][rows];
     initializeBoard();
+    while(checkForMatches()){
+      refillBoard();
+    }
   }
   
-  public int returnScore(){
-    return score;
+  public String boardImage(){
+    return boardImage;
   }
   
-  public boolean inOperation(){
-    return inOperation;
-  }
   
   public void initializeBoard(){
     for (int i = 0; i < cols; i++){
       for (int j = 0; j < rows; j++){    
         grid[i][j] = new Fruits();
       }
-    }
-    while (checkForMatches()){
-      refillBoard();
     }
   }
   
@@ -43,7 +40,6 @@ public class Board {
   }
   
   public void drawBoard(){
-    
     for (int n = 0; n < cols; n++){
       for (int m = 0; m < rows; m++){
         if (grid[n][m] != null){
@@ -60,28 +56,95 @@ public class Board {
     if (secondCol < 0 || secondCol >= cols || secondRow < 0 || secondRow >= rows){
       return;
     }
-
     if (firstRow == -5 && firstCol == -5){
-      firstRow = rows;
-      firstCol = cols;
+      firstRow = secondRow;
+      firstCol = secondCol;
     }
     else{
-      if (((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1)) || ((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1))){
-        swap(firstRow, firstCol, rows, cols);
+      if (((firstRow == secondRow) && (Math.abs(firstCol - secondCol) == 1)) || ((firstCol == secondCol) && (Math.abs(firstRow - secondRow) == 1))){
+        swap(firstRow, firstCol, secondRow, secondCol);
+        if (!(hasMatch(secondRow,secondCol) || hasMatch(firstRow,firstCol))){
+          swap(firstRow, firstCol, secondRow, secondCol);
+        }
         firstRow = -5;
         firstCol = -5;
       }
     }
   }
+
+  public boolean hasMatch(int row, int col){
+    Fruits current = grid[row][col];
+    String currType = current.getFruitType();
+
+    //horizontal checks
+    if (col < cols-2){
+      Fruits right1 = grid[row][col+1];
+      Fruits right2 = grid[row][col+2];
+      if (right1 != null && right2 != null &&
+        right1.getFruitType().equals(currType) &&
+        right2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (col >= 2){
+      Fruits left1 = grid[row][col-1];
+      Fruits left2 = grid[row][col-2];
+      if (left1 != null && left2 != null &&
+        left1.getFruitType().equals(currType) &&
+        left2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (col >= 1 && col < cols-1){
+      Fruits left = grid[row][col-1];
+      Fruits right = grid[row][col+1];
+      if (left != null && right != null &&
+        left.getFruitType().equals(currType) &&
+        right.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    //vertical checks
+    if (row < rows-2){
+      Fruits bottom1 = grid[row+1][col];
+      Fruits bottom2 = grid[row+2][col];
+      if (bottom1 != null && bottom2 != null &&
+        bottom1.getFruitType().equals(currType) &&
+        bottom2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (row >= 2){
+      Fruits top1 = grid[row-1][col];
+      Fruits top2 = grid[row-2][col];
+      if (top1 != null && top2 != null &&
+        top1.getFruitType().equals(currType) &&
+        top2.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    if (row >= 1 && row < rows-1){
+      Fruits top = grid[row-1][col];
+      Fruits bottom = grid[row+1][col];
+      if (top != null && bottom != null &&
+        top.getFruitType().equals(currType) &&
+        bottom.getFruitType().equals(currType)){
+          return true;
+        }
+    }
+
+    return false;
+  }
   
   public void swap(int firstRow, int firstCol, int secondRow, int secondCol){
     Fruits secondFruit = grid[secondRow][secondCol];
-    secondFruit.getFruitType().equals();
-    if (grid[secondRow][secondCol]){
-      Fruits temp = grid[secondRow][secondCol];
-      grid[secondRow][secondCol] = grid[firstRow][firstCol];
-      grid[firstRow][firstCol] = temp;
-    }
+    grid[secondRow][secondCol] = grid[firstRow][firstCol];
+    grid[firstRow][firstCol] = secondFruit;
   }
 
   public void applyGravity(){
@@ -89,8 +152,8 @@ public class Board {
   }
   
   public void refillBoard(){
-    for (int i = 0; i < rows; i++){
-      for (int j = 0; j < cols; j++){
+    for (int i = 0; i < cols; i++){
+      for (int j = 0; j < rows; j++){
         if (grid[i][j] == null){
           grid[i][j] = new Fruits();
         }
@@ -100,8 +163,8 @@ public class Board {
   }
   
   public boolean checkForMatches(){
+    boolean possible = false;
     boolean[][] matches = new boolean[rows][cols];
-    boolean stillHasMatches = false;
 
     for (int i = 0; i < rows; i++){
       for (int j = 0; j < cols-2; j++){
@@ -114,9 +177,9 @@ public class Board {
               matches[i][j] = true;
               matches[i][j+1] = true;
               matches[i][j+2] = true;
-              stillHasMatches = true;
+              inOperation = true;
               score+=300;
-              stillHasMatches = true;
+              possible = true;
             }
       }
     }
@@ -134,7 +197,7 @@ public class Board {
               matches[m+2][n] = true;
               inOperation = true;
               score+=300;
-              stillHasMatches = true;
+              possible = true;
             }
       }
     }
@@ -146,7 +209,7 @@ public class Board {
         }
       }
     }
-    return stillHasMatches;
+    return possible;
   }
   
   public boolean isPossibleMove(){

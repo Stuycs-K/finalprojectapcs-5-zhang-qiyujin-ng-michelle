@@ -3,7 +3,7 @@ public class Board {
   private Fruits[][] grid;
   private int cols, rows;
   private int cellSize;
-  private PImage boardImage;
+  private String boardImage;
   private int firstRow = -5;
   private int firstCol = -5;
   private int score = 0;
@@ -13,9 +13,13 @@ public class Board {
     this.cols = cols;
     this.rows = rows;
     this.cellSize = cellSize;
-    this.boardImage = loadImage(PinkImage.png);
+    this.boardImage = "PinkImage.png";
     grid = new Fruits[cols][rows];
     initializeBoard();
+  }
+  
+  public String boardImage(){
+    return boardImage;
   }
   
   public void initializeBoard(){
@@ -145,8 +149,8 @@ public class Board {
   }
   
   public void refillBoard(){
-    for (int i = 0; i < rows; i++){
-      for (int j = 0; j < cols; j++){
+    for (int i = 0; i < cols; i++){
+      for (int j = 0; j < rows; j++){
         if (grid[i][j] == null){
           grid[i][j] = new Fruits();
         }
