@@ -15,7 +15,7 @@ public class ScoreBoard{
 
     public void addToScore(int points){
         score+=points;
-        updateLevel(points);
+        updateLevel(score);
     }
 
     public ScoreBoard(){
