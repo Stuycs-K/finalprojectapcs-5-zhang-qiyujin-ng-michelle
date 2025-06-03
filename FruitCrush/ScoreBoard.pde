@@ -14,7 +14,7 @@ public class ScoreBoard{
     }
 
     public void addToScore(int points){
-        score+=poits;
+        score+=points;
         updateLevel();
     }
 
