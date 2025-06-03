@@ -6,7 +6,6 @@ public class Board {
   private String boardImage;
   private int firstRow = -5;
   private int firstCol = -5;
-  private int score = 0;
   private boolean inOperation;
   private boolean gameStarted;
 
@@ -168,7 +167,7 @@ public class Board {
               matches[r][c+1] = true;
               matches[r][c+2] = true;
               if(gameStarted)
-                score+=300;
+                scoreBoard.addToScore(300);
               possible = true;
             }
       }
@@ -186,7 +185,7 @@ public class Board {
               matches[m+1][n] = true;
               matches[m+2][n] = true;
               if(gameStarted)
-                score+=300;
+                scoreBoard.addToScore(300);
               possible = true;
             }
       }
