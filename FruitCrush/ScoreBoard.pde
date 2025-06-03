@@ -1,6 +1,6 @@
 public class ScoreBoard{
-    private int score = 0;
-    private int level = 1;
+    private int score;
+    private int level;
 
     public void display(){
         fill(136, 224, 236);
@@ -20,13 +20,13 @@ public class ScoreBoard{
 
     public ScoreBoard(){
         this.score = 0;
-        this.level = 0;
+        this.level = 1;
     }
 
     private void levelUpdate(int score){
-        if (((score/10000) + 1) > level){
-            level = (score/10000) + 1;
-            return level;
+        int newLevel = (score/10000)+1;
+        if (newLevel > level){
+            return newLevel;
         }
     }
 

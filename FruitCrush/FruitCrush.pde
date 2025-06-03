@@ -1,17 +1,20 @@
 Fruits fruit;
 Board board;
 PImage boardImage;
+ScoreBoard sb;
 int sideLength = 500;
 int dimension = 10;
 
 void setup(){
-  size(500,500);
+  size(500,600);
+  sb = new ScoreBoard();
   fruit = new Fruits();
   board = new Board(dimension, dimension, sideLength/dimension);
   boardImage = loadImage(board.boardImage());
   boardImage.resize(sideLength,0);
   image(boardImage,0,0);
   board.drawBoard();
+  sb.display();
 }
 
 void draw(){
@@ -19,6 +22,7 @@ void draw(){
     background(0);
     image(boardImage,0,0);
     board.drawBoard();
+    sb.display();
     board.update();
   }
 }
