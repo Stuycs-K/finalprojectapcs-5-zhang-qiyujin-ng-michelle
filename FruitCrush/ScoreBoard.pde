@@ -26,7 +26,7 @@ public class ScoreBoard{
     private void levelUpdate(int score){
         int newLevel = (score/10000)+1;
         if (newLevel > level){
-            return newLevel;
+            level = newLevel;
         }
     }
 
