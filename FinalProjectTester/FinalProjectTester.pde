@@ -3,6 +3,7 @@ Board board;
 PImage boardImage;
 int sideLength = 500;
 int dimension = 10;
+int regenX, regenY, regenLength, regenWidth;
 
 void setup(){
   size(500,500);
@@ -24,7 +25,23 @@ void draw(){
 }
 
 void mousePressed(){
+  if(clickedOnRegen(mouseX,mouseY)){
+    board.drawBoard();
+    return;
+  }
   if(!board.inOperation){
     board.handleMouse(mouseX,mouseY);
   }
+}
+
+void regenBoard(int x, int y, int xlength, int ywidth){
+  regenX = x;
+  regenY = y;
+  regenLength = xlength;
+  regenWidth = ywidth;  
+  rect(x,y,xlength,ywidth);
+}
+
+boolean clickedOnRegen(int x, int y){
+  return(x >= regenX && regenX <= (x+regenLength) && y >= regenY && regenY <= (y+regenWidth));
 }

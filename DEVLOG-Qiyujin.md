@@ -24,3 +24,6 @@ Need to work on: making score board,adding reshuffle button, adding more combina
 
 ### 2025-06-02
 Updated images so everything is in transparent background. 
+
+### 2025-06-03
+Added regen button
