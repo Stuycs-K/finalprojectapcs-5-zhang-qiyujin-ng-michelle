@@ -6,8 +6,8 @@ int dimension = 10;
 
 void setup(){
   size(500,600);
-  fruit = new Fruits();
   board = new Board(dimension, dimension, sideLength/dimension);
+  fruit = new Fruits(sb.getLevel());
   boardImage = loadImage(board.boardImage());
   boardImage.resize(sideLength,0);
   image(boardImage,0,0);
