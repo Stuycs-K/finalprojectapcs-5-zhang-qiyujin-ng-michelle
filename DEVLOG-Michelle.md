@@ -24,4 +24,7 @@ neighboring from all sides. (50 minutes).
 Changed swap so that it only happens when there are two matching fruits adjacent to new spot, implemented into handleMouse and fixed its adjacent-checking. Added a pinkgrid for the board game background. (50 minutes)
 
 ### 2025-06-02 - Brief description
-Found new fruit pngs. Wrote the scoreBoard class, added it to the display at the bottom. May make levels that allow you to get one new fruit or another perk. (50 minutes)
+Found new fruit pngs. Wrote the ScoreBoard class, added it to the display at the bottom. May make levels that allow you to get one new fruit or another perk. (50 minutes)
+
+### 2025-06-03 - Brief description
+Fixed the display at the bottom, tested and fixed the score and level update. 
