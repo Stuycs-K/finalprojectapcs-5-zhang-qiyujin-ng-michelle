@@ -1,11 +1,15 @@
   public class Fruits {
-    private final String[] FruitCategory = new String[]{"strawberry.png","apple.png","banana.png","peach.png","cherry.png","mango.png","kiwi.png","pineapple.png"};
+    private final String[][] FruitCategories = new String[][]{{"strawberry.png","apple.png","banana.png","peach.png","cherry.png"}, 
+    {"strawberry.png","apple.png","banana.png","peach.png","cherry.png","mango.png"}
+    {"strawberry.png","apple.png","banana.png","peach.png","cherry.png","mango.png","kiwi.png"}
+    {"strawberry.png","apple.png","banana.png","peach.png","cherry.png","mango.png","kiwi.png","pineapple.png"}};
     private PImage image;
     private String fruitType;
 
     public Fruits(int level){
-      int extraFruits = level/5;
-      fruitType = "Images/" + FruitCategory[(int)(Math.random()*FruitCategory.length)];
+      int extraFruits = (level/5)-1;
+      int categoryLength = FruitCategories[extraFruits].length;
+      fruitType = "Images/" + FruitCategories[extraFruits][(int)(Math.random()*categoryLength)];
       image = loadImage(fruitType);
     }
 
