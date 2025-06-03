@@ -11,15 +11,17 @@ public class ScoreBoard{
         textAlign(LEFT, CENTER);
         text("Score: " + score, 20, 515);
         text("Level: " + level, 20, 545);
+        text(level, 20, 560);
+        text(level+1, 55, 560);
 
         stroke(255);
-        rect(10, 560, 25, 15);
+        rect(25, 560, 25, 15);
 
         fill(0, 255, 0);
         stroke(255);
         double fillPercent = (((double) score - (level*2500))/2500);
         int fillAmt = (int) (fillPercent*25)
-        rect(10, 560, fillAmt, 15);
+        rect(25, 560, fillAmt, 15);
     }
 
     public void addToScore(int points){
