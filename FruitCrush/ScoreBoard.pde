@@ -15,7 +15,7 @@ public class ScoreBoard{
 
     public void addToScore(int points){
         score+=points;
-        updateLevel();
+        updateLevel(score);
     }
 
     public ScoreBoard(){
@@ -23,7 +23,7 @@ public class ScoreBoard{
         this.level = 1;
     }
 
-    private void levelUpdate(int score){
+    private void updateLevel(int score){
         int newLevel = (score/10000)+1;
         if (newLevel > level){
             level = newLevel;
@@ -34,9 +34,9 @@ public class ScoreBoard{
         return score;
     }
 
-    public int getLevel{
+    public int getLevel(){
         return level;
     }
 
-    
+
 }
