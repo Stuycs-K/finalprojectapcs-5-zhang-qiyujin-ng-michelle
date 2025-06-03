@@ -27,4 +27,4 @@ Changed swap so that it only happens when there are two matching fruits adjacent
 Found new fruit pngs. Wrote the ScoreBoard class, added it to the display at the bottom. May make levels that allow you to get one new fruit or another perk. (50 minutes)
 
 ### 2025-06-03 - Brief description
-Fixed the display at the bottom, tested and fixed the score and level update. 
+Fixed the display at the bottom, tested and fixed the score and level update. Allowed for every 5 levels to add another fruit to the game, up to three new fruits; changed fruit constructor. Green progress bar for new level at bottom of the scoreboard. Added new fruit pngs for next level fruits. (60 minutes)
