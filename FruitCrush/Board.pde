@@ -154,6 +154,15 @@ public class Board {
     inOperation = false;
   }
 
+  public void clearRowCol(int row, int col){
+    for (int i = 0; i < col; i++){
+      matches[row][i] = true;
+    }
+    for (int j = 0; j < row; j++){
+      matches[j][col] = true;
+    }
+  }
+
   public boolean checkForMatches(){
     boolean possible = false;
     boolean[][] matches = new boolean[rows][cols];
@@ -169,6 +178,8 @@ public class Board {
               if (c+3<cols && grid[r][c+3] != null && fruit1.getFruitType().equals(grid[r][c+3].getFruitType())){
                 String fruit4Type = grid[r][c+3].getFruitType();
                 grid[r][c+3] = new SpecialFruits(fruit4Type);
+                clearRowCol(r,c+3);
+                sb.addToScore(3800);
               }
               else{
                 matches[r][c] = true;
