@@ -28,3 +28,6 @@ Found new fruit pngs. Wrote the ScoreBoard class, added it to the display at the
 
 ### 2025-06-03 - Brief description
 Fixed the display at the bottom, tested and fixed the score and level update. Allowed for every 5 levels to add another fruit to the game, up to three new fruits; changed fruit constructor. Green progress bar for new level at bottom of the scoreboard. Added new fruit pngs for next level fruits. (60 minutes)
+
+### 2025-06-04 - Brief description
+Adjusted the green progress bar, fixed error with the level calculation. Changed checkForMatches() to account for 4-in-a-row. Wrote SpecialFruits subclass to create a different fruit for 4-in-a-row combinations, clears row and column. (70 minutes)
