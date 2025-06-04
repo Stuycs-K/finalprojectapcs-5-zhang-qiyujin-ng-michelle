@@ -7,7 +7,7 @@
     private String fruitType;
 
     public Fruits(int level){
-      int extraFruits = (level/5);
+      int extraFruits = (level/5)-1;
       int categoryLength = FruitCategories[extraFruits].length;
       fruitType = "Images/" + FruitCategories[extraFruits][(int)(Math.random()*categoryLength)];
       image = loadImage(fruitType);

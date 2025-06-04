@@ -20,7 +20,7 @@ public class ScoreBoard{
         fill(0, 255, 0);
         stroke(255);
         double fillPercent = (((double) score - (level*2500))/2500);
-        int fillAmt = (int) (fillPercent*25)
+        int fillAmt = (int) (fillPercent*25);
         rect(25, 560, fillAmt, 15);
     }
 
