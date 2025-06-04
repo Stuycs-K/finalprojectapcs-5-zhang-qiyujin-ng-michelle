@@ -5,13 +5,14 @@ int sideLength = 500;
 int dimension = 10;
 
 void setup(){
-  size(500,500);
-  fruit = new Fruits();
+  size(500,600);
   board = new Board(dimension, dimension, sideLength/dimension);
+  fruit = new Fruits(sb.getLevel());
   boardImage = loadImage(board.boardImage());
   boardImage.resize(sideLength,0);
   image(boardImage,0,0);
   board.drawBoard();
+  board.sb.display();
 }
 
 void draw(){
@@ -19,6 +20,7 @@ void draw(){
     background(0);
     image(boardImage,0,0);
     board.drawBoard();
+    board.sb.display();
     board.update();
   }
 }

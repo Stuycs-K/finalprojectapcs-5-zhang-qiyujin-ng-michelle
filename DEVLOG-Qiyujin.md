@@ -20,4 +20,10 @@ began working on FruitCrush and bringing things together. decided to not do shuf
 
 ### 2025-06-01
 The MVP is now working: can switch, clear out, drop down, etc. 
-Need to work on: making score board,adding reshuffle button, adding more combinations for clearing, animation, special bonus clears, etc. 
+Need to work on: making score board,adding reshuffle button, adding more combinations for clearing, animation, special bonus clears, etc. \
+
+### 2025-06-02
+Updated images so everything is in transparent background. 
+
+### 2025-06-03
+Added regen button

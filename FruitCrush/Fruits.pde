@@ -1,21 +1,26 @@
   public class Fruits {
-    private final String[] FruitCategory = new String[]{"strawberry.png","apple.png","banana.png","peach.jpg","cherry.jpg"};
+    private final String[][] FruitCategories = new String[][]{{"strawberry.png","apple.png","banana.png","peach.png","cherry.png"}, 
+    {"strawberry.png","apple.png","banana.png","peach.png","cherry.png","mango.png"}
+    {"strawberry.png","apple.png","banana.png","peach.png","cherry.png","mango.png","kiwi.png"}
+    {"strawberry.png","apple.png","banana.png","peach.png","cherry.png","mango.png","kiwi.png","pineapple.png"}};
     private PImage image;
     private String fruitType;
-    
-    public Fruits(){
-      fruitType = "Images/" + FruitCategory[(int)(Math.random()*FruitCategory.length)];
+
+    public Fruits(int level){
+      int extraFruits = (level/5)-1;
+      int categoryLength = FruitCategories[extraFruits].length;
+      fruitType = "Images/" + FruitCategories[extraFruits][(int)(Math.random()*categoryLength)];
       image = loadImage(fruitType);
     }
-  
+
     public String getFruitType(){
       return fruitType;
     }
-    
+
     public void drawFruits(int x, int y, int size){
       image.resize(size,0);
       image(image, x, y);
-    }  
-  
-    
+    }
+
+
   }
