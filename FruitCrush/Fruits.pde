@@ -20,6 +20,10 @@
       return fruitType;
     }
 
+    public void setFruitType(String setFruitType){
+      this.fruitType = setFruitType;
+    }
+
     public void drawFruits(int x, int y, int size){
       image.resize(size,0);
       image(image, x, y);
