@@ -166,12 +166,18 @@ public class Board {
         if (fruit1 != null && fruit2 != null && fruit3 != null &&
             fruit1.getFruitType().equals(fruit2.getFruitType()) &&
             fruit2.getFruitType().equals(fruit3.getFruitType())){
-              matches[r][c] = true;
-              matches[r][c+1] = true;
-              matches[r][c+2] = true;
-              if(gameStarted)
-                sb.addToScore(300);
-              possible = true;
+              if (c+3<cols && grid[r][c+3] != null && fruit1.getFruitType().equals(grid[r][c+3].getFruitType())){
+                String fruit4Type = grid[r][c+3].getFruitType();
+                grid[r][c+3] = new SpecialFruits(fruit4Type);
+              }
+              else{
+                matches[r][c] = true;
+                matches[r][c+1] = true;
+                matches[r][c+2] = true;
+                if(gameStarted)
+                  sb.addToScore(300);
+                possible = true;
+              }
             }
       }
     }
