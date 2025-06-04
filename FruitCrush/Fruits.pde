@@ -8,6 +8,9 @@
 
     public Fruits(int level){
       int extraFruits = (level/5);
+      if (extraFruits > 3){
+        extraFruits = 3;
+      }
       int categoryLength = FruitCategories[extraFruits].length;
       fruitType = "Images/" + FruitCategories[extraFruits][(int)(Math.random()*categoryLength)];
       image = loadImage(fruitType);
