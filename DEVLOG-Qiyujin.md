@@ -31,3 +31,7 @@ Updated images so everything is in transparent background.
 ### 2025-06-03
 Added regen button and home button. Also made home page. 
 (60 min)
+
+### 2025-06-04
+Completed animation for regen button when the board is reloading. (30min)
+

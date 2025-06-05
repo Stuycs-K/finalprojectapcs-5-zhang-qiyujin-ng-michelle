@@ -5,6 +5,7 @@ int dimension = 10;
 int regenX, regenY, regenLength, regenWidth;
 int homeX, homeY, homeLength, homeWidth;
 boolean atHome = true;
+boolean regenBoard;
 
 void setup(){
     size(500,600);
@@ -19,16 +20,24 @@ void setup(){
     text("CRUSH",100,300);
     textSize(20);
     text("click anywhere to start",160,350);
+    regenBoard = false;
 }
 
 void draw(){
-  if(frameCount%10 == 0 && !board.inOperation && !atHome){
+  if(frameCount%10 == 0 && !atHome && !board.inOperation){
     background(0);
     image(boardImage,0,0);
     board.drawBoard();
     board.sb.display();
     board.update();
-    regenButton(7*50, 500,3*50,100);
+    if(!regenBoard)
+      regenButton(7*50, 500,3*50,100, false);
+    else{
+      regenButton(7*50, 500,3*50,100, true);
+      Board newBoard = new Board(dimension, dimension, sideLength/dimension);
+      board.grid = newBoard.grid;
+      regenBoard = false;
+    }
     homeButton(4*50, 500,3*50,100);
   }
   if(atHome){
@@ -49,8 +58,8 @@ void mousePressed(){
     return;
   }
   if(clickedOnRegen(mouseX,mouseY)){
-    Board newBoard = new Board(dimension, dimension, sideLength/dimension);
-    board.grid = newBoard.grid;
+    regenButton(7*50, 500,3*50,100, true);
+    regenBoard = true;
     return;
   }
   if(clickedOnHome(mouseX,mouseY)){
@@ -61,7 +70,7 @@ void mousePressed(){
     board.handleMouse(mouseX,mouseY);
   }
 }
-void regenButton(int x, int y, int xlength, int ywidth){
+void regenButton(int x, int y, int xlength, int ywidth, boolean regeneratingNow){
   regenX = x;
   regenY = y;
   regenLength = xlength;
@@ -70,7 +79,11 @@ void regenButton(int x, int y, int xlength, int ywidth){
   rect(x,y,xlength,ywidth);
   fill(0);
   textSize(20);
-  text("REGENERATE",370,550);
+  if (regeneratingNow){
+    text("REGENERATING",360,550);
+  }
+  else
+    text("REGENERATE",370,550);
 }
 
 void homeButton(int x, int y, int xlength, int ywidth){
