@@ -2,10 +2,12 @@ Board board;
 PImage boardImage;
 int sideLength = 500;
 int dimension = 10;
+int tileWidth = sideLength/dimension;
 int regenX, regenY, regenLength, regenWidth;
 int homeX, homeY, homeLength, homeWidth;
+int firstTileX, firstTileY, secondTileX, secondTileY;
 boolean atHome = true;
-boolean regenBoard;
+boolean regenBoard, firstTile,secondTile;
 
 void setup(){
     size(500,600);
@@ -21,12 +23,28 @@ void setup(){
     textSize(20);
     text("click anywhere to start",160,350);
     regenBoard = false;
+    firstTile = false;
+    secondTile = false;
 }
 
 void draw(){
   if(frameCount%10 == 0 && !atHome && !board.inOperation){
     background(0);
     image(boardImage,0,0);
+    if(firstTile){
+      fill(0,230,0);
+      rect((firstTileX/tileWidth)*tileWidth,(firstTileY/tileWidth)*tileWidth,tileWidth, tileWidth);
+      fill(0);
+    }
+    if(secondTile){
+      fill(0,230,0);
+      rect((secondTileX/tileWidth)*tileWidth,(secondTileY/tileWidth)*tileWidth,tileWidth, tileWidth);
+      fill(0);
+    }
+    if(firstTile&&secondTile){
+      firstTile = false;
+      secondTile = false;
+    }
     board.drawBoard();
     board.sb.display();
     board.update();
@@ -67,6 +85,18 @@ void mousePressed(){
     return;
   }
   if(!board.inOperation){
+    if(mouseY <= sideLength){
+      if(firstTile){
+        secondTile = true;
+        secondTileX = mouseX;
+        secondTileY = mouseY;
+      }
+      else{
+        firstTile = true;
+        firstTileX = mouseX;
+        firstTileY = mouseY;
+      }
+    }
     board.handleMouse(mouseX,mouseY);
   }
 }

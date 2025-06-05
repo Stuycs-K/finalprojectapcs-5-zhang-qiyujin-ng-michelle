@@ -6,7 +6,7 @@ public class Board {
   private String boardImage;
   private int firstRow = -5;
   private int firstCol = -5;
-  private boolean inOperation, regenerating;
+  private boolean inOperation;
   private boolean gameStarted;
   private ScoreBoard sb;
 
@@ -19,7 +19,6 @@ public class Board {
     grid = new Fruits[rows][cols];
     initializeBoard();
     gameStarted = false;
-    regenerating = false;
     while(checkForMatches()){
       refillBoard();
     }
