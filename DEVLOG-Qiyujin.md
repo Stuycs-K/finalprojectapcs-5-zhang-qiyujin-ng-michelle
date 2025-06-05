@@ -34,4 +34,4 @@ Added regen button and home button. Also made home page.
 
 ### 2025-06-04
 Completed animation for regen button when the board is reloading. (30min)
-
+Completed animation for fruits falldown(120min)
