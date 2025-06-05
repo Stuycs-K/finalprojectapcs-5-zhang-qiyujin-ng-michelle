@@ -185,10 +185,10 @@ public class Board {
   }
 
   public void clearRowCol(int row, int col, boolean[][] matches){
-    for (int i = 0; i < col; i++){
+    for (int i = 0; i < cols; i++){
       matches[row][i] = true;
     }
-    for (int j = 0; j < row; j++){
+    for (int j = 0; j < rows; j++){
       matches[j][col] = true;
     }
   }
