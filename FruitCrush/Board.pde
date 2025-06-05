@@ -184,7 +184,7 @@ public class Board {
     return count;
   }
 
-  public void clearRowCol(int row, int col){
+  public void clearRowCol(int row, int col, boolean[][] matches){
     for (int i = 0; i < col; i++){
       matches[row][i] = true;
     }
@@ -205,9 +205,18 @@ public class Board {
         if (fruit1 != null && fruit2 != null && fruit3 != null &&
             fruit1.getFruitType().equals(fruit2.getFruitType()) &&
             fruit2.getFruitType().equals(fruit3.getFruitType())){
-              if (c+3<cols && grid[r][c+3] != null && fruit1.getFruitType().equals(grid[r][c+3].getFruitType())){
-                grid[r][c+3] = new SpecialFruits();
-                clearRowCol(r,c+3);
+              if (c+4<cols && grid[r][c+4] != null && fruit1.getFruitType().equals(grid[r][c+4].getFruitType())){
+                grid[5][5] = new SpecialFruits(5);
+                for (int i = 0; i < rows; i++){
+                  clearRowCol(i,0,matches);
+                }
+                if(gameStarted)
+                  sb.addToScore(10000);
+                possible = true;
+              }
+              else if (c+3<cols && grid[r][c+3] != null && fruit1.getFruitType().equals(grid[r][c+3].getFruitType())){
+                grid[r][c+3] = new SpecialFruits(4);
+                clearRowCol(r,c+3,matches);
                 if(gameStarted)
                   sb.addToScore(3800);
                 possible = true;
@@ -232,9 +241,18 @@ public class Board {
         if (fruit1 != null && fruit2 != null && fruit3 != null &&
             fruit1.getFruitType().equals(fruit2.getFruitType()) &&
             fruit1.getFruitType().equals(fruit3.getFruitType())){
-              if (m+3<rows && grid[m+3][n] != null && fruit1.getFruitType().equals(grid[m+3][n].getFruitType())){
+              if (m+4<rows && grid[m+4][n] != null && fruit1.getFruitType().equals(grid[m+4][n].getFruitType())){
+                grid[5][5] = new SpecialFruits(5);
+                for (int i = 0; i < rows; i++){
+                  clearRowCol(i,0,matches);
+                }
+                if(gameStarted)
+                  sb.addToScore(10000);
+                possible = true;
+              }
+              else if (m+3<rows && grid[m+3][n] != null && fruit1.getFruitType().equals(grid[m+3][n].getFruitType())){
                 grid[m+3][n] = new SpecialFruits();
-                clearRowCol(m+3,n);
+                clearRowCol(m+3,n,matches);
                 if(gameStarted)
                   sb.addToScore(3800);
                 possible = true;
