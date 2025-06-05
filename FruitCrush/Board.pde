@@ -34,23 +34,35 @@ public class Board {
   public void initializeBoard(){
     for (int r = 0; r < rows; r++){
       for (int c = 0; c < cols; c++){
-        grid[r][c] = new Fruits(sb.level);
+        grid[r][c] = new Fruits(sb.level,r*cellSize);
       }
     }
   }
 
   public void update(){
-    if(checkForMatches()){
-      applyGravity();
-      refillBoard();
-    }
+    if(allFruitsSettled())
+      checkForMatches();
+    applyGravity();
+    refillBoard();
   }
-
+  
+  public boolean allFruitsSettled(){
+    for (int r = 0; r < rows; r++){
+      for (int c = 0; c < cols; c++){
+        if(grid[r][c]!=null && !grid[r][c].isSettled()){
+          return false;
+        }
+      }
+    }
+    return true;
+  }
+  
   public void drawBoard(){
     for (int r = 0; r < rows; r++){
       for (int c = 0; c < cols; c++){
         if (grid[r][c] != null){
-          grid[r][c].drawFruits(c*cellSize, r*cellSize, cellSize);
+          grid[r][c].updateFall();
+          grid[r][c].drawFruits(c*cellSize, grid[r][c].yPosition, cellSize);
         }
       }
     }
@@ -128,10 +140,12 @@ public class Board {
   }
 
   public void applyGravity(){
+    inOperation = true;
     for(int c = 0; c < cols; c++){
       int bottomRow = rows-1;
       for(int r = rows-1; r >= 0; r --){
         if(grid[r][c] != null){
+          grid[r][c].targetY = (bottomRow)*cellSize;
           grid[bottomRow][c] = grid[r][c];
           if(bottomRow != r){
             grid[r][c] = null;
@@ -145,12 +159,29 @@ public class Board {
   public void refillBoard(){
     for (int r = 0; r < rows; r++){
       for (int c = 0; c < cols; c++){
+        int emptyInCol = nullsInCol(c);
         if (grid[r][c] == null){
-          grid[r][c] = new Fruits(sb.level);
+          if(!gameStarted){
+            grid[r][c] = new Fruits(sb.level,r*cellSize);
+          }
+          else{
+            grid[r][c] = new Fruits(sb.level,(r-emptyInCol-1)*cellSize);
+            grid[r][c].targetY = r*cellSize;
+          }
         }
       }
     }
     inOperation = false;
+  }
+  
+  public int nullsInCol(int col){
+    int count = 0;
+    for(int r = 0; r < rows; r ++){
+      if(grid[r][col] == null){
+        count ++;
+      }
+    } 
+    return count;
   }
 
   public boolean checkForMatches(){
