@@ -1,9 +1,11 @@
 public class SpecialFruits extends Fruits {
   private PImage specialImage;
+  private int matchNum;
 
   public SpecialFruits(){
     super(0);
-    setFruitType("Images/special.png");
+    matchNum = match; 
+    setFruitType("Images/special"+matchNum+".png");
     specialImage = loadImage(getFruitType());
   }
 
