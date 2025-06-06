@@ -9,13 +9,16 @@ public class Board {
   private boolean inOperation;
   private boolean gameStarted;
   private ScoreBoard sb;
+  private int level;
 
-  public Board(int cols, int rows, int cellSize){
+  public Board(int cols, int rows, int cellSize, int level){
     this.cols = cols;
     this.rows = rows;
     this.cellSize = cellSize;
     this.boardImage = "PinkGrid.png";
     this.sb = new ScoreBoard();
+    this.sb.level=level;
+    this.level=level;
     grid = new Fruits[rows][cols];
     initializeBoard();
     gameStarted = false;
@@ -34,7 +37,7 @@ public class Board {
   public void initializeBoard(){
     for (int r = 0; r < rows; r++){
       for (int c = 0; c < cols; c++){
-        grid[r][c] = new Fruits(sb.level,r*cellSize);
+        grid[r][c] = new Fruits(this.level,r*cellSize);
       }
     }
   }

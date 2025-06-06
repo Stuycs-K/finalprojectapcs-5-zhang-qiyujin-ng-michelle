@@ -11,7 +11,7 @@ boolean regenBoard, firstTile,secondTile;
 
 void setup(){
     size(500,600);
-    board = new Board(dimension, dimension, sideLength/dimension);
+    board = new Board(dimension, dimension, sideLength/dimension, board.sb.getLevel());
     boardImage = loadImage(board.boardImage());
     boardImage.resize(sideLength,0);
     fill(28,92,184);
@@ -52,8 +52,9 @@ void draw(){
       regenButton(7*50, 500,3*50,100, false);
     else{
       regenButton(7*50, 500,3*50,100, true);
-      Board newBoard = new Board(dimension, dimension, sideLength/dimension);
+      Board newBoard = new Board(dimension, dimension, sideLength/dimension, board.sb.getLevel());
       board.grid = newBoard.grid;
+      board.sb = newBoard.sb;
       regenBoard = false;
     }
     homeButton(4*50, 500,3*50,100);
