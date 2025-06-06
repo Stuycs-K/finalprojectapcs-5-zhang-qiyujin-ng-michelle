@@ -45,7 +45,7 @@ public class Board {
     applyGravity();
     refillBoard();
   }
-  
+
   public boolean allFruitsSettled(){
     for (int r = 0; r < rows; r++){
       for (int c = 0; c < cols; c++){
@@ -56,7 +56,7 @@ public class Board {
     }
     return true;
   }
-  
+
   public void drawBoard(){
     for (int r = 0; r < rows; r++){
       for (int c = 0; c < cols; c++){
@@ -173,14 +173,14 @@ public class Board {
     }
     inOperation = false;
   }
-  
+
   public int nullsInCol(int col){
     int count = 0;
     for(int r = 0; r < rows; r ++){
       if(grid[r][col] == null){
         count ++;
       }
-    } 
+    }
     return count;
   }
 
@@ -205,7 +205,8 @@ public class Board {
         if (fruit1 != null && fruit2 != null && fruit3 != null &&
             fruit1.getFruitType().equals(fruit2.getFruitType()) &&
             fruit2.getFruitType().equals(fruit3.getFruitType())){
-              if (c+4<cols && grid[r][c+4] != null && fruit1.getFruitType().equals(grid[r][c+4].getFruitType())){
+              if (c+4<cols && grid[r][c+3] != null && fruit1.getFruitType().equals(grid[r][c+3].getFruitType())
+              && grid[r][c+4] != null && fruit1.getFruitType().equals(grid[r][c+4].getFruitType())){
                 grid[5][5] = new SpecialFruits(5);
                 for (int i = 0; i < rows; i++){
                   clearRowCol(i,0,matches);
@@ -241,7 +242,8 @@ public class Board {
         if (fruit1 != null && fruit2 != null && fruit3 != null &&
             fruit1.getFruitType().equals(fruit2.getFruitType()) &&
             fruit1.getFruitType().equals(fruit3.getFruitType())){
-              if (m+4<rows && grid[m+4][n] != null && fruit1.getFruitType().equals(grid[m+4][n].getFruitType())){
+              if (m+4<rows && grid[m+3][n] != null && fruit1.getFruitType().equals(grid[m+3][n].getFruitType())
+              && grid[m+4][n] != null && fruit1.getFruitType().equals(grid[m+4][n].getFruitType())){
                 grid[5][5] = new SpecialFruits(5);
                 for (int i = 0; i < rows; i++){
                   clearRowCol(i,0,matches);
@@ -285,7 +287,7 @@ public class Board {
         refillBoard();
       }
     }
-    
+
     inOperation = false;
     return possible;
   }
