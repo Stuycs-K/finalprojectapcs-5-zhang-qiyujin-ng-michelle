@@ -91,6 +91,7 @@ public class Board {
         }
         firstRow = -5;
         firstCol = -5;
+        inOperation = false;
       }
     }
   }
