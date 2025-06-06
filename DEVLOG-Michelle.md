@@ -31,3 +31,6 @@ Fixed the display at the bottom, tested and fixed the score and level update. Al
 
 ### 2025-06-04 - Brief description
 Adjusted the green progress bar, fixed error with the level calculation. Changed checkForMatches() to account for 4-in-a-row. Wrote SpecialFruits subclass to create a different fruit for 4-in-a-row combinations, clears row and column. (70 minutes)
+
+### 2025-06-05 - Brief description
+(No school). Implemented special 5-in-a-row combination, spawns a special fruit in the middle and clears the entire grid; it regenerates a new board. Added another special fruit image. (30 minutes)
