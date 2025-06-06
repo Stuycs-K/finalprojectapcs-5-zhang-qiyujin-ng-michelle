@@ -269,13 +269,23 @@ public class Board {
       }
     }
 
+    int clearedCount = 0;
     for (int b = 0; b < rows; b++){
       for (int k = 0; k < cols; k++){
         if (matches[b][k]){
           grid[b][k] = null;
+          clearedCount++;
         }
       }
     }
+
+    if (clearedCount == rows*cols){
+      initializeBoard();
+      while(checkForMatches()){
+        refillBoard();
+      }
+    }
+    
     inOperation = false;
     return possible;
   }
