@@ -5,6 +5,7 @@ int dimension = 10;
 int tileWidth = sideLength/dimension;
 int regenX, regenY, regenLength, regenWidth;
 int homeX, homeY, homeLength, homeWidth;
+int special4Y, special5Y;
 int firstTileX, firstTileY, secondTileX, secondTileY;
 boolean atHome = true;
 boolean regenBoard, firstTile,secondTile;
@@ -49,15 +50,17 @@ void draw(){
     board.sb.display();
     board.update();
     if(!regenBoard)
-      regenButton(7*50, 500,3*50,100, false);
+      regenButton(7*50, 500,3*50,50, false);
     else{
-      regenButton(7*50, 500,3*50,100, true);
+      regenButton(7*50, 500,3*50,50, true);
       Board newBoard = new Board(dimension, dimension, sideLength/dimension, board.sb.getLevel());
       board.grid = newBoard.grid;
       board.sb = newBoard.sb;
       regenBoard = false;
     }
-    homeButton(4*50, 500,3*50,100);
+    homeButton(4*50, 500,3*50,50);
+    special4Button(4*50, 550, 3*50, 50);
+    special5Button(4*50, 550, 3*50, 50);
   }
   if(atHome){
     fill(28,92,184);
@@ -100,6 +103,13 @@ void mousePressed(){
     }
     board.handleMouse(mouseX,mouseY);
   }
+  if (mouseX >= homeX && mouseX <= regenX && mouseY > special4Y && mouseY <= special4Y+50){
+    board.special4Demo();
+  }
+
+  if (mouseX > regenX && mouseX <= 500 && mouseY > special5Y && mouseY <= special5Y+50){
+    board.special5Demo();
+  }
 }
 void regenButton(int x, int y, int xlength, int ywidth, boolean regeneratingNow){
   regenX = x;
@@ -111,10 +121,10 @@ void regenButton(int x, int y, int xlength, int ywidth, boolean regeneratingNow)
   fill(0);
   textSize(20);
   if (regeneratingNow){
-    text("REGENERATING",360,550);
+    text("REGENERATING",360,525);
   }
   else
-    text("REGENERATE",370,550);
+    text("REGENERATE",370,525);
 }
 
 void homeButton(int x, int y, int xlength, int ywidth){
@@ -126,7 +136,25 @@ void homeButton(int x, int y, int xlength, int ywidth){
   rect(x,y,xlength,ywidth);
   fill(0);
   textSize(20);
-  text("HOME",250,550);
+  text("HOME",250,525);
+}
+
+void special4Button(int x, int y, int xlength, int ywidth){
+  special4Y = y;
+  fill(144, 238, 144);
+  rect(x,y,xlength,ywidth);
+  fill(0);
+  textSize(20);
+  text("Special-4", 250, 575);
+}
+
+void special5Button(int x, int y, int xlength, int ywidth){
+  special5Y = y;
+  fill(144, 238, 144);
+  rect(x,y,xlength,ywidth);
+  fill(0);
+  textSize(20);
+  text("Special-5", 370, 575);
 }
 
 boolean clickedOnRegen(int x, int y){
