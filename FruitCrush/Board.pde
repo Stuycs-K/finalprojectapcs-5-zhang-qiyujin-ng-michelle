@@ -375,4 +375,27 @@ public class Board {
     return (count>=3);
 
   }
+
+  public void special4Demo(){
+    String demoType = "blueberry.png";
+    int row = 2;
+    int col = 2;
+
+    for (int i = 0; i < 3; i++){
+      grid[row][col+i].setFruit(demoType);
+    }
+    grid[row+1][col+3].setFruit(demoType);
+  }
+
+  public void special5Demo(){
+    String demoType = "blueberry.png";
+    int row = 5;
+    int col = 3;
+
+    for (int i = 0; i < 4; i++){
+      grid[row][col+i].setFruit(demoType);
+    }
+    grid[row+1][col+4].setFruit(demoType);
+  }
+
 }
