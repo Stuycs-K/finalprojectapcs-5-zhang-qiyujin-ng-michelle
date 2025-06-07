@@ -17,9 +17,9 @@ Ending features: We will have one special fruit that can clear the entire board 
 
 UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
 ![Alt text](ClassDiagramOne.png?raw=true "Class Diagram" )
- -FruitCrush.pde: main file.  
+ -FruitCrush.pde: main file that sets up the board, combines everything for playability.  
    -Fruits.pde: creates types of Fruits and include their corresponding images.   
-     -SpecialFruits.java: creates Fruits that will do special moves.   
+     -SpecialFruits.pde: creates Fruits that will do special moves.   
    -Board.pde: creates the board and makes actual updates at the end of each move, (new)ensuring there is a possible next move.    
    ~-Algorism.pde: The key algorism that ensures that there's always a possible next move/refresh the board.~  
    -(new)ScoreBoard.pde: Displays the total score, current level, and progress bar between the last and next level. Allows for new fruits to be added for every 5 levels.
@@ -28,14 +28,14 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
 # Intended pacing:
 
 -Thursday 5/22: Complete class structures (not methods, just structure) (Qiyujin/Michelle)   
--Friday 5/23: Finish writing Fruits (Qiyujin), ~SpecialFruits (Michelle)~, and (new)start writing Board (Qiyujin/Michelle) 
--Tuesday 5/27: ~Finish writing algorithm and~ Add images (Qiyujin/Michelle), (new)write Fruits (Qiyujin), continue writing Board (Michelle)
+-Friday 5/23: Finish writing Fruits (Qiyujin), ~SpecialFruits (Michelle)~, and (new)start writing Board (Qiyujin/Michelle)   
+-Tuesday 5/27: ~Finish writing algorithm and~ Add images (Qiyujin/Michelle), (new)write Fruits (Qiyujin), continue writing Board (Michelle)   
 -Wednesday 5/28: Tests and revise the entire program as a whole, improve on playability~/algorism.~ (Qiyujin/Michelle)   
--Thursday 5/29: (new)Start FruitCrush to combine things (Qiyujin),  more Testing/Debugging/Playing (Qiyujin/Michelle)
--Friday 5/30: ~last day to make any changes.~ (new)Continue writing/fixing Board (Michelle)
--(new)Monday 6/2: Start writing the ScoreBoard (Michelle), fix bugs and test MVP (Qiyujin/Michelle)
--Tuesday 6/3: Update images (Qiyujjin/Michelle), Regnerate and Home buttons (Qiyujin), continue writing ScoreBoard and new level fruits (Michelle) 
--Wednesday 6/4: Animation for fruit falldown (Qiyujin), Start writing SpecialFruits (Michelle)
+-Thursday 5/29: (new)Start FruitCrush to combine things (Qiyujin),  more Testing/Debugging/Playing (Qiyujin/Michelle)   
+-Friday 5/30: ~last day to make any changes.~ (new)Continue writing/fixing Board (Michelle)   
+-(new)Monday 6/2: Start writing the ScoreBoard (Michelle), fix bugs and test MVP (Qiyujin/Michelle)   
+-Tuesday 6/3: Update images (Qiyujjin/Michelle), Regnerate and Home buttons (Qiyujin), continue writing ScoreBoard and new level fruits (Michelle)   
+-Wednesday 6/4: Animation for fruit falldown (Qiyujin), Start writing SpecialFruits (Michelle)   
 -Friday 6/6: Finish SpecialFruits (Michelle), create demo buttons (Michelle), fix animation for visibility of clears (Qiyujin)
      
 ** there is an in class presentation and a process of video production that's not being included since the exact date is not determined.    
