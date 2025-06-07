@@ -5,6 +5,7 @@ int dimension = 10;
 int tileWidth = sideLength/dimension;
 int regenX, regenY, regenLength, regenWidth;
 int homeX, homeY, homeLength, homeWidth;
+int special4Y, special5Y;
 int firstTileX, firstTileY, secondTileX, secondTileY;
 boolean atHome = true;
 boolean regenBoard, firstTile,secondTile;
@@ -102,6 +103,13 @@ void mousePressed(){
     }
     board.handleMouse(mouseX,mouseY);
   }
+  if (mouseX >= homeX && mouseX <= regenX && mouseY > special4Y && mouseY <= special4Y+50){
+    board.special4Demo();
+  }
+
+  if (mouseX > regenX && mouseX <= 500 && mouseY > special5Y && mouseY <= special5Y+50){
+    board.special5Demo();
+  }
 }
 void regenButton(int x, int y, int xlength, int ywidth, boolean regeneratingNow){
   regenX = x;
@@ -131,17 +139,19 @@ void homeButton(int x, int y, int xlength, int ywidth){
   text("HOME",250,525);
 }
 
-void special4Button(int  x, int y, int xlength, int ywidth){
+void special4Button(int x, int y, int xlength, int ywidth){
+  special4Y = y;
   fill(144, 238, 144);
-  rect(x,y,xlength,ywdith);
+  rect(x,y,xlength,ywidth);
   fill(0);
   textSize(20);
   text("Special-4", 250, 575);
 }
 
-void special5Button(int  x, int y, int xlength, int ywidth){
+void special5Button(int x, int y, int xlength, int ywidth){
+  special5Y = y;
   fill(144, 238, 144);
-  rect(x,y,xlength,ywdith);
+  rect(x,y,xlength,ywidth);
   fill(0);
   textSize(20);
   text("Special-5", 370, 575);
