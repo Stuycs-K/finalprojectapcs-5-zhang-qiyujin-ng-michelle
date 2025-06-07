@@ -34,3 +34,6 @@ Adjusted the green progress bar, fixed error with the level calculation. Changed
 
 ### 2025-06-05 - Brief description
 (No school). Implemented special 5-in-a-row combination, spawns a special fruit in the middle and clears the entire grid; it regenerates a new board. Added another special fruit image. (30 minutes)
+
+### 2025-06-06 - Brief description
+Fixed the progress bar for double-digit levels. Changed the regenerate button so that the board initializes and plays with new fruits corresponding to the level. Made a delay for the special fruit initialization so it's visible. (60 minutes)
