@@ -27,6 +27,11 @@
       this.fruitType = setFruitType;
     }
 
+    public void setFruit(String type){
+      this.fruitType = type;
+      this.image = loadImage("Images/"+type);
+    }
+
     public void updateFall(){
       if(yPosition < targetY){
         yPosition += fallSpeed;
