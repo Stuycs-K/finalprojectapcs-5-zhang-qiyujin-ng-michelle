@@ -42,3 +42,6 @@ caught bugs(40 min)
 
 ### 2025-06-07
 made sure that special fruits works as intended(120 min)
+
+### 2025-06-08
+caught bugs(30 min)

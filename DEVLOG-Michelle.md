@@ -40,3 +40,5 @@ Fixed the progress bar for double-digit levels. Changed the regenerate button so
 
 ### 2025-06-07 - Brief description
 (No school). Wrote two methods to easily demonstrate special4 and special5. Created buttons on the screen for the demos. (30 minutes)
+
+I believe this document accurately reflects the contributions of my teamate -- QIYUJIN ZHANG
