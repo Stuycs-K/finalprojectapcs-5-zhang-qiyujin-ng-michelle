@@ -2,9 +2,9 @@
 # Technical Details:
 
 Period: 5  
-Group members: Qiyujin Zhang, Michelle Ng  
+Qiyujin Zhang, Michelle Ng  
 
-Group Name: Fruit Crush: Qiwi & Melonchelle 
+Fruit Crush: Qiwi & Melonchelle 
 
 Brief Project description (1 paragraph summary): We will be recreating Candy Crush (but making it fruit instead of candy). We will make a 10x10 grid with different images (symbols) that represent the fruit. We will have a scoreboard at the ~top~ (new)bottom that continuously updates. If you have 3 or more of the same fruits in a line (link), you will get a 100 points per fruit cleared. If you link 4, you will get a special fruit. When the special type of a fruit is canceled out, it instantly clears out its row and column; you get 200 points per fruit cleared. If you link 5, the special in the middle will clear the entire board and then regenerate; you get 100 points per fruit cleared.
 
@@ -29,16 +29,16 @@ UML Diagrams and descriptions of key algorithms, classes, and how things fit tog
 
 # Intended pacing:
 
-- Thursday 5/22: Complete class structures (not methods, just structure) (Qiyujin/Michelle)   
-- Friday 5/23: Finish writing Fruits (Qiyujin), ~SpecialFruits (Michelle)~, and (new)start writing Board (Qiyujin/Michelle)   
-- Tuesday 5/27: ~Finish writing algorithm and~ Add images (Qiyujin/Michelle), (new)write Fruits (Qiyujin), continue writing Board (Michelle)   
-- Wednesday 5/28: Tests and revise the entire program as a whole, improve on playability~/algorism.~ (Qiyujin/Michelle)   
-- Thursday 5/29: (new)Start FruitCrush to combine things (Qiyujin),  more Testing/Debugging/Playing (Qiyujin/Michelle)   
-- Friday 5/30: ~last day to make any changes.~ (new)Continue writing/fixing Board (Michelle)   
-- (new)Monday 6/2: Start writing the ScoreBoard (Michelle), fix bugs and test MVP (Qiyujin/Michelle)   
-- Tuesday 6/3: Update images (Qiyujjin/Michelle), Regnerate and Home buttons (Qiyujin), continue writing ScoreBoard and new level fruits (Michelle)   
-- Wednesday 6/4: Animation for fruit falldown (Qiyujin), Start writing SpecialFruits (Michelle)   
-- Friday 6/6: Finish SpecialFruits (Michelle), create demo buttons (Michelle), fix animation for visibility of clears (Qiyujin)
+- :white_check_mark: Thursday 5/22: Complete class structures (not methods, just structure) (Qiyujin/Michelle)   
+- :white_check_mark: Friday 5/23: Finish writing Fruits (Qiyujin), ~SpecialFruits (Michelle)~, and (new)start writing Board (Qiyujin/Michelle)   
+- :white_check_mark: Tuesday 5/27: ~Finish writing algorithm and~ Add images (Qiyujin/Michelle), (new)write Fruits (Qiyujin), continue writing Board (Michelle)   
+- :white_check_mark: Wednesday 5/28: Tests and revise the entire program as a whole, improve on playability~/algorism.~ (Qiyujin/Michelle)   
+- :white_check_mark: Thursday 5/29: (new)Start FruitCrush to combine things (Qiyujin),  more Testing/Debugging/Playing (Qiyujin/Michelle)   
+- :white_check_mark: Friday 5/30: ~last day to make any changes.~ (new)Continue writing/fixing Board (Michelle)   
+- :white_check_mark: (new)Monday 6/2: Start writing the ScoreBoard (Michelle), fix bugs and test MVP (Qiyujin/Michelle)   
+- :white_check_mark: Tuesday 6/3: Update images (Qiyujjin/Michelle), Regnerate and Home buttons (Qiyujin), continue writing ScoreBoard and new level fruits (Michelle)   
+- :white_check_mark: Wednesday 6/4: Animation for fruit falldown (Qiyujin), Start writing SpecialFruits (Michelle)   
+- :white_check_mark: Friday 6/6: Finish SpecialFruits (Michelle), create demo buttons (Michelle), fix animation for visibility of clears (Qiyujin)
+- :white_check_mark: Sunday 6/8: Film video presentation (Qiyujin/Michelle)
      
-** there is an in class presentation and a process of video production that's not being included since the exact date is not determined.    
-
+** there is an in class presentation ~and a process of video production~ that's not being included since the exact date is not determined.    
