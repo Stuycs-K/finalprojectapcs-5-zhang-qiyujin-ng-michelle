@@ -37,3 +37,6 @@ Adjusted the green progress bar, fixed error with the level calculation. Changed
 
 ### 2025-06-06 - Brief description
 Fixed the progress bar for double-digit levels. Changed the regenerate button so that the board initializes and plays with new fruits corresponding to the level. Made a delay for the special fruit initialization so it's visible. (60 minutes)
+
+### 2025-06-07 - Brief description
+(No school). Wrote two methods to easily demonstrate special4 and special5. Created buttons on the screen for the demos. (30 minutes)
