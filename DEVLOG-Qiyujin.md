@@ -45,3 +45,5 @@ made sure that special fruits works as intended(120 min)
 
 ### 2025-06-08
 caught bugs(30 min)
+
+I believe this document accurately reflects the contributions of my teamate. -- Michelle Ng

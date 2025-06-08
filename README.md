@@ -1,4 +1,9 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/YxXKqIeT)
+# Final Video
+[Google Drive link for nycgov email](https://drive.google.com/file/d/1Yjg27dp5Y6k8aUsXDNAfD_DhqCz7XTmT/view?usp=sharing)
+
+[Google Drive link for stuy email](https://drive.google.com/file/d/1MQ_12Uot5OIAjygagAvSdK-eibCI2CxP/view?usp=sharing)
+
 # Project Description
 
 Our game is a recreation of Candy Crush, but instead of candy, it's fruit. There is a 10x10 board full of randomized fruit, in which your goal is to match multiple fruits together in a row (horizontally or vertically) to clear and gain points. Then, the board will refill with new fruits, dropping from the top to bottom. Every time a fruit is cleared in a match of 3 fruits, 100 points are rewarded per fruit. For special (rarer) combinations, such as matching 4 or 5 fruits in a row, there were be special fruits that can clear its entire row/column or clear the entire board. More points will be rewarded for those special combinations. As you continue to gain points, you will level up; for every 5 levels, a new fruit will be added to your board for up to 3 new fruits. This increases the difficulty of the game as less matches will occur.
