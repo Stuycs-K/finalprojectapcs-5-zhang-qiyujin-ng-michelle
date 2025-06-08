@@ -16,6 +16,7 @@ Ending features: We will have one special fruit that can clear the entire board 
 # Project Design
 
 UML Diagrams and descriptions of key algorithms, classes, and how things fit together.
+![Alt text](ClassDiagramFinalVersion.png?raw=true "Class Diagram Updated" )
 ![Alt text](ClassDiagramOne.png?raw=true "Class Diagram" )
  - FruitCrush.pde: main file that sets up the board, combines everything for playability.  
    - Fruits.pde: creates types of Fruits and include their corresponding images.   
