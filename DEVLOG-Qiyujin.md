@@ -35,3 +35,10 @@ Added regen button and home button. Also made home page.
 ### 2025-06-04
 Completed animation for regen button when the board is reloading. (30min)
 Completed animation for fruits falldown(120min)
+
+### 2025-06-06
+replaced image of mango with orange(10 min)
+caught bugs(40 min)
+
+### 2025-06-07
+made sure that special fruits works as intended(120 min)
