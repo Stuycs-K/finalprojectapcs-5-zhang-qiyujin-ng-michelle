@@ -5,7 +5,7 @@ public class SpecialFruits extends Fruits {
   public SpecialFruits(int match, int initialY){
     super(0, initialY);
     matchNum = match;
-    waitTime = 15;
+    waitTime = 5;
     setFruitType("Images/special"+matchNum+".png");
     specialImage = loadImage(getFruitType());
   }
@@ -14,5 +14,8 @@ public class SpecialFruits extends Fruits {
     specialImage.resize(size,0);
     image(specialImage, x, y);
   }
-
+  
+  public int matchNum(){
+    return matchNum;
+  }
 }

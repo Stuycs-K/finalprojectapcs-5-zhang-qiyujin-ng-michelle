@@ -11,10 +11,8 @@ public class Board {
   private boolean gameStarted;
   private ScoreBoard sb;
   private int level;
-  private boolean specialFruitExist;
 
   public Board(int cols, int rows, int cellSize, int level){
-    specialFruitExist = false;
     this.cols = cols;
     this.rows = rows;
     matches = new boolean[rows][cols];
@@ -73,6 +71,9 @@ public class Board {
         if (grid[r][c] != null){
           grid[r][c].updateFall();
           grid[r][c].drawFruits(c*cellSize, grid[r][c].yPosition, cellSize);
+        }
+        if(grid[r][c] instanceof SpecialFruits){
+          ((SpecialFruits)grid[r][c]).waitTime --;
         }
       }
     }
@@ -198,12 +199,18 @@ public class Board {
     return count;
   }
 
-  public void clearRowCol(int row, int col, boolean[][] matches){
+  public void clearRowCol(int row, int col){
     for (int i = 0; i < cols; i++){
       matches[row][i] = true;
     }
     for (int j = 0; j < rows; j++){
       matches[j][col] = true;
+    }
+  }
+  
+  public void clearBoard(){
+    for (int i = 0; i < rows; i++){
+      clearRowCol(i,0);
     }
   }
 
@@ -217,6 +224,17 @@ public class Board {
             grid[r][c] = new Fruits(sb.level,r*cellSize);
             possible = true;
           }
+        if(grid[r][c] instanceof SpecialFruits){
+          SpecialFruits placeHolder = (SpecialFruits)grid[r][c];
+          if(placeHolder.waitTime <= 0){
+            if(placeHolder.matchNum() == 4){
+              clearRowCol(r,c);
+            }
+            if(placeHolder.matchNum == 5){
+              clearBoard();
+            }
+          }
+        }
         Fruits fruit1 = grid[r][c];
         Fruits fruit2 = grid[r][c+1];
         Fruits fruit3 = grid[r][c+2];
@@ -226,8 +244,9 @@ public class Board {
               
               if (c+4<cols && grid[r][c+3] != null && fruit1.getFruitType().equals(grid[r][c+3].getFruitType())
               && grid[r][c+4] != null && fruit1.getFruitType().equals(grid[r][c+4].getFruitType())){
+                boolean hasSpecialFruit = false;
                 for(int k = 0; k < 5; k ++){
-                  if( k == 4 ){
+                  if( k == 4 && !hasSpecialFruit){
                     grid[r][c+k] = new SpecialFruits(5, r*cellSize);
                     matches[r][c+k] = false;
                     break;
@@ -235,13 +254,12 @@ public class Board {
                   if(grid[r][c+k].recentlySwapped){
                     grid[r][c+k] = new SpecialFruits(5, r*cellSize);
                     matches[r][c+k] = false;
-                    break;
+                    hasSpecialFruit = true;
                   }
                   else{
                     matches[r][c+k] = true;
                   }
                 }
-                specialFruitExist = true;
                 /*
                 for (int i = 0; i < rows; i++){
                   clearRowCol(i,0,matches);
@@ -253,8 +271,9 @@ public class Board {
               }
               
               else if (c+4<cols && grid[r][c+3] != null && fruit1.getFruitType().equals(grid[r][c+3].getFruitType())&& grid[r][c+4] != null && !fruit1.getFruitType().equals(grid[r][c+4].getFruitType())){
+                boolean hasSpecialFruit = false;
                 for(int k = 0; k < 4; k ++){
-                  if( k == 3 ){
+                  if( k == 3 && !hasSpecialFruit){
                     grid[r][c+k] = new SpecialFruits(4, r*cellSize);
                     matches[r][c+k] = false;
                     break;
@@ -262,13 +281,12 @@ public class Board {
                   if(grid[r][c+k].recentlySwapped){
                     grid[r][c+k] = new SpecialFruits(4, r*cellSize);
                     matches[r][c+k] = false;
-                    break;
+                    hasSpecialFruit = true;
                   }
                   else{
                     matches[r][c+k] = true;
                   }
                 }
-                specialFruitExist = true;
                 //clearRowCol(r,c+3,matches);
                 if(gameStarted)
                   sb.addToScore(3800);
@@ -298,8 +316,9 @@ public class Board {
             fruit1.getFruitType().equals(fruit3.getFruitType())){
               if (m+4<rows && grid[m+3][n] != null && fruit1.getFruitType().equals(grid[m+3][n].getFruitType())
               && grid[m+4][n] != null && fruit1.getFruitType().equals(grid[m+4][n].getFruitType())){
+                boolean hasSpecialFruit = false;
                 for(int k = 0; k < 5; k ++){
-                  if( k == 4 ){
+                  if( k == 4 && !hasSpecialFruit){
                     grid[m+k][n] = new SpecialFruits(5, (m+k)*cellSize);
                     matches[m+k][n] = false;
                     break;
@@ -307,13 +326,12 @@ public class Board {
                   if(grid[m+k][n].recentlySwapped){
                     grid[m+k][n] = new SpecialFruits(5, (m+k)*cellSize);
                     matches[m+k][n] = false;
-                    break;
+                    hasSpecialFruit = true;
                   }
                   else{
                     matches[m+k][n] = true;
                   }
                 }
-                specialFruitExist = true;
                 if(gameStarted)
                   sb.addToScore(10000);
                 possible = true;
@@ -324,8 +342,9 @@ public class Board {
                 */
               }
               else if (m+4<rows && m+3<rows && grid[m+3][n] != null && fruit1.getFruitType().equals(grid[m+3][n].getFruitType()) && grid[m+4][n] != null && !fruit1.getFruitType().equals(grid[m+4][n].getFruitType())){
+                boolean hasSpecialFruit = false;
                 for(int k = 0; k < 4; k ++){
-                  if( k == 3 ){
+                  if( k == 3 && !hasSpecialFruit){
                     grid[m+k][n] = new SpecialFruits(4, (m+k)*cellSize);
                     matches[m+k][n] = false;
                     break;
@@ -333,13 +352,12 @@ public class Board {
                   if(grid[m+k][n].recentlySwapped){
                     grid[m+k][n] = new SpecialFruits(4, (m+k)*cellSize);
                     matches[m+k][n] = false;
-                    break;
+                    hasSpecialFruit = true;
                   }
                   else{
                     matches[m+k][n] = true;
                   }
                 }
-                specialFruitExist = true;
                 if(gameStarted)
                   sb.addToScore(3800);
                 possible = true;
@@ -358,23 +376,14 @@ public class Board {
       }
     }
 
-    int clearedCount = 0;
     for (int b = 0; b < rows; b++){
       for (int k = 0; k < cols; k++){
         if (matches[b][k]){
           grid[b][k] = null;
-          clearedCount++;
         }
         else{
           grid[b][k].recentlySwapped= false;
         }
-      }
-    }
-
-    if (clearedCount == rows*cols){
-      initializeBoard();
-      while(checkForMatches()){
-        refillBoard();
       }
     }
 
