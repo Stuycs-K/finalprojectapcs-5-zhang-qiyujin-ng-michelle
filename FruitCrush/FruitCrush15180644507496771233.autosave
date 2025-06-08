@@ -5,15 +5,13 @@ int dimension = 10;
 int tileWidth = sideLength/dimension;
 int regenX, regenY, regenLength, regenWidth;
 int homeX, homeY, homeLength, homeWidth;
-int fourX, fourY, fourLength, fourWidth;
-int fiveX, fiveY, fiveLength, fiveWidth;
 int firstTileX, firstTileY, secondTileX, secondTileY;
 boolean atHome = true;
 boolean regenBoard, firstTile,secondTile;
 
 void setup(){
     size(500,600);
-    board = new Board(dimension, dimension, sideLength/dimension, 1);
+    board = new Board(dimension, dimension, sideLength/dimension, 0);
     boardImage = loadImage(board.boardImage());
     boardImage.resize(sideLength,0);
     fill(28,92,184);
@@ -51,16 +49,15 @@ void draw(){
     board.sb.display();
     board.update();
     if(!regenBoard)
-      regenButton(7*50, 500,3*50,50, false);
+      regenButton(7*50, 500,3*50,100, false);
     else{
-      regenButton(7*50, 500,3*50,50, true);
+      regenButton(7*50, 500,3*50,100, true);
       Board newBoard = new Board(dimension, dimension, sideLength/dimension, board.sb.getLevel());
       board.grid = newBoard.grid;
+      board.sb = newBoard.sb;
       regenBoard = false;
     }
-    homeButton(4*50, 500,3*50,50);
-    special4Button(4*50, 550, 3*50, 50);
-    special5Button(7*50, 550, 3*50, 50);
+    homeButton(4*50, 500,3*50,100);
   }
   if(atHome){
     fill(28,92,184);
@@ -80,7 +77,7 @@ void mousePressed(){
     return;
   }
   if(clickedOnRegen(mouseX,mouseY)){
-    regenButton(7*50, 500,3*50,50, true);
+    regenButton(7*50, 500,3*50,100, true);
     regenBoard = true;
     return;
   }
@@ -103,12 +100,6 @@ void mousePressed(){
     }
     board.handleMouse(mouseX,mouseY);
   }
-  if (clickedOnFour(mouseX,mouseY)){
-    board.special4Demo();
-  }
-  if(clickedOnFive(mouseX,mouseY)){
-    board.special5Demo();
-  }
 }
 void regenButton(int x, int y, int xlength, int ywidth, boolean regeneratingNow){
   regenX = x;
@@ -120,10 +111,10 @@ void regenButton(int x, int y, int xlength, int ywidth, boolean regeneratingNow)
   fill(0);
   textSize(20);
   if (regeneratingNow){
-    text("REGENERATING",360,525);
+    text("REGENERATING",360,550);
   }
   else
-    text("REGENERATE",370,525);
+    text("REGENERATE",370,550);
 }
 
 void homeButton(int x, int y, int xlength, int ywidth){
@@ -135,42 +126,12 @@ void homeButton(int x, int y, int xlength, int ywidth){
   rect(x,y,xlength,ywidth);
   fill(0);
   textSize(20);
-  text("HOME",250,525);
-}
-
-void special4Button(int x, int y, int xlength, int ywidth){
-  fourX = x;
-  fourY = y;
-  fourLength = xlength;
-  fourWidth = ywidth;  
-  fill(144, 238, 144);
-  rect(x,y,xlength,ywidth);
-  fill(0);
-  textSize(20);
-  text("Special-4", 235, 575);
-}
-
-void special5Button(int x, int y, int xlength, int ywidth){
-  fiveX = x;
-  fiveY = y;
-  fiveLength = xlength;
-  fiveWidth = ywidth;  
-  fill(144, 238, 144);
-  rect(x,y,xlength,ywidth);
-  fill(0);
-  textSize(20);
-  text("Special-5", 385, 575);
+  text("HOME",250,550);
 }
 
 boolean clickedOnRegen(int x, int y){
-  return(x >= regenX && x <= (regenX+regenLength) && y >= regenY && y <= (regenY+regenWidth));
+  return(x >= regenX && regenX <= (x+regenLength) && y >= regenY && regenY <= (y+regenWidth));
 }
 boolean clickedOnHome(int x, int y){
-  return(x >= homeX && x <= (homeX+homeLength) && y >= homeY && y <= (homeY+homeWidth));
-}
-boolean clickedOnFour(int x, int y){
-  return(x >= fourX && x <= (fourX+fourLength) && y >= fourY && y <= (fourY+fourWidth));
-}
-boolean clickedOnFive(int x, int y){
-  return(x >= fiveX && x <= (fiveY+homeLength) && y >= fiveY && y <= (fiveY+fiveWidth));
+  return(x >= homeX && homeX <= (x+homeLength) && y >= homeY && homeY <= (y+homeWidth));
 }
