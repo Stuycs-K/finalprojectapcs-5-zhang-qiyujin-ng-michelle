@@ -98,10 +98,10 @@ public class Board {
         if (!(hasMatch(secondRow,secondCol) || hasMatch(firstRow,firstCol))){
           swap(firstRow, firstCol, secondRow, secondCol);
         }
-        firstRow = -5;
-        firstCol = -5;
-        inOperation = false;
       }
+      firstRow = -5;
+      firstCol = -5;
+      inOperation = false;
     }
   }
 
@@ -217,9 +217,9 @@ public class Board {
   public boolean checkForMatches(){
     boolean possible = false;
     matches = new boolean[rows][cols];
-
-    for (int r = 0; r < rows; r++){
-      for (int c = 0; c < cols-2; c++){
+    
+    for(int r = 0; r < rows; r ++){
+      for(int c = 0; c < cols; c ++){
         if(!gameStarted && grid[r][c] instanceof SpecialFruits){
             grid[r][c] = new Fruits(sb.level,r*cellSize);
             possible = true;
@@ -235,6 +235,11 @@ public class Board {
             }
           }
         }
+      }
+    }
+
+    for (int r = 0; r < rows; r++){
+      for (int c = 0; c < cols-2; c++){
         Fruits fruit1 = grid[r][c];
         Fruits fruit2 = grid[r][c+1];
         Fruits fruit3 = grid[r][c+2];
@@ -270,7 +275,7 @@ public class Board {
                 possible = true;
               }
               
-              else if (c+4<cols && grid[r][c+3] != null && fruit1.getFruitType().equals(grid[r][c+3].getFruitType())&& grid[r][c+4] != null && !fruit1.getFruitType().equals(grid[r][c+4].getFruitType())){
+              else if (c+3<cols && grid[r][c+3] != null && fruit1.getFruitType().equals(grid[r][c+3].getFruitType())){
                 boolean hasSpecialFruit = false;
                 for(int k = 0; k < 4; k ++){
                   if( k == 3 && !hasSpecialFruit){
@@ -341,7 +346,7 @@ public class Board {
                 }
                 */
               }
-              else if (m+4<rows && m+3<rows && grid[m+3][n] != null && fruit1.getFruitType().equals(grid[m+3][n].getFruitType()) && grid[m+4][n] != null && !fruit1.getFruitType().equals(grid[m+4][n].getFruitType())){
+              else if (m+3<rows && grid[m+3][n] != null && fruit1.getFruitType().equals(grid[m+3][n].getFruitType())){
                 boolean hasSpecialFruit = false;
                 for(int k = 0; k < 4; k ++){
                   if( k == 3 && !hasSpecialFruit){
@@ -462,8 +467,8 @@ public class Board {
 
   public void special4Demo(){
     String demoType = "blueberry.png";
-    int row = 2;
-    int col = 2;
+    int row = 6;
+    int col = 6;
 
     grid[row][col].setFruit(demoType);
     grid[row][col+1].setFruit(demoType);
